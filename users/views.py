@@ -51,7 +51,7 @@ def driver(request):
         [template]: [render a template[driver]]
     """
     current_user = request.user
-    return render(request,'driver/driver.html')    
+    return render(request,'drivers/driver.html')    
 
 class PassengerSignUpView(CreateView):
     """[class view]
