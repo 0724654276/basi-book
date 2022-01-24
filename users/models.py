@@ -21,3 +21,18 @@ class Driver(models.Model):
         models ([class]): [Create a user[driver]]
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+class Passenger(models.Model):
+    """[Passenger model]
+
+    Args:
+        models ([class): [model class to create user[passenger]]
+
+    Returns:
+        [python string]: [stringify the user object]
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+ 
+    def __str__(self):
+        return self.user.username
+
+
