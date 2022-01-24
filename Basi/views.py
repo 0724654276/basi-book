@@ -15,7 +15,7 @@ def home(request):
         [template]: [return homepage template]
     """
     if request.user.is_authenticated:
-        if request.user.is_customer:
+        if request.user.is_passenger:
             return redirect(reverse_lazy('users:passenger'))
         else:
             return redirect('users:driver')

@@ -2,23 +2,28 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User 
 # Create your models here.
-'''class BookModel(models.Model):
+class BusModel(models.Model):
     """[BookModel]
 
     Args:
-        models ([Class]): [Book model to book a seat]
+        models ([Class]): [Book model to post a bus]
 
     Returns:
         [modelDatabase]: [Create table from python class]
     """
-    user_requesting = models.ForeignKey(User, on_delete=models.CASCADE)
-    from_location = models.CharField(max_length=100, blank=True)
-    to_location = models.CharField(max_length=100, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='bus_pics/')
+    location = models.CharField(max_length=100, blank=True)
+    seats = models.CharField(max_length=100, blank=True)
+    num_plate = models.CharField(max_length=100,blank=True)
+    id_num = models.CharField(max_length=100, blank=True)
+    route = models.CharField(max_length=100, blank=True)
+    phone_num = models.CharField(max_length=100,blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
-    
+  
     
     def __str__(self):
-        return self.user_requesting + from_location
+        return str(self.user)
 
 
-    '''
+    
