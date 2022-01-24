@@ -6,27 +6,312 @@
     <div class="header">
 {% include "home/navbar.html" %}
 </div>
-<div class="container">
-    <div class="row">
-      <div class="col">
-        
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="mask flex-center">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-7 col-12 order-md-1 order-2">
+                <h4>BusBook<br>
+                The ultimate Ride</h4>
+                <p>Dedicated to bringing travel to your home.Our website id dedicated to connecting you with drivers and passengers in a fast and secure way.<br>
+                </p>
+                <a href="#">About</a> </div>
+              <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://media.istockphoto.com/photos/coach-bus-picture-id540124958?b=1&k=20&m=540124958&s=170667a&w=0&h=-cmvnjGO8MD-JGItYBoxsekoRlj4Wy93obx6YH5UWBU=" class="mx-auto" alt="slide"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col">
-        
+      <div class="carousel-item">
+        <div class="mask flex-center">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-7 col-12 order-md-1 order-2">
+                <h4>Community and support<br>
+                  Join our blog</h4>
+                <p>You can report any abuse or incident at our <strong>BusChap</strong>blog.All you need is to create an account and starting talking with other communters!</p>
+                <a href="#">Blog</a> </div>
+              <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://media.istockphoto.com/photos/social-media-and-digital-online-concept-woman-using-smartphone-picture-id1288271580?b=1&k=20&m=1288271580&s=170667a&w=0&h=T5tNQeD6dQ7o-PmpZR-ymGDSHvpyj-AEyeRuSNEWE8Q=" class="mx-auto" alt="slide"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="mask flex-center">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-7 col-12 order-md-1 order-2">
+                <h4>Here you are, <br>
+                One step away from the traveling in convenience</h4>
+                <p>Sign up with a driver or passenger account to use BusChap.Easy,convenient and completely free!</p>
+                <a href="#">Login or signup</a> </div>
+              <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YnVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" class="mx-auto" alt="slide"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        
-      </div>
-      <div class="col">
-        2 of 3
-      </div>
-      <div class="col">
-        3 of 3
-      </div>
-    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+  <!--slide end--> 
+
+
+
+  <style>
+      /* lineup class and keyframes */
+.lineUp {
+  animation: 2s anim-lineUp ease-out infinite;
+  color: white;
+}
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+	background-color: #212529;
+}
+
+/*carousel*/
+#myCarousel .carousel-item .mask {
+    position: absolute;
+    top: 0;
+	left:0;
+	height:100%;
+    width: 100%;
+    background-attachment: fixed;
+}
+#myCarousel h4{
+	font-size:50px;
+	margin-bottom:15px;
+	color:#FFF;
+	line-height:100%;
+	letter-spacing:0.5px;
+	font-weight:600;
+}
+#myCarousel p{
+	font-size:18px;
+	margin-bottom:15px;
+	color:#d5d5d5;
+}
+#myCarousel .carousel-item a{background:#F47735; font-size:14px; color:#FFF; padding:13px 32px; display:inline-block; }
+#myCarousel .carousel-item a:hover{background:#394fa2; text-decoration:none;  }
+
+#myCarousel .carousel-item h4{-webkit-animation-name:fadeInLeft; animation-name:fadeInLeft;} 
+#myCarousel .carousel-item p{-webkit-animation-name:slideInRight; animation-name:slideInRight;} 
+#myCarousel .carousel-item a{-webkit-animation-name:fadeInUp; animation-name:fadeInUp;}
+#myCarousel .carousel-item .mask img{-webkit-animation-name:slideInRight; animation-name:slideInRight; display:block; height:auto; max-width:100%;}
+#myCarousel h4, #myCarousel p, #myCarousel a, #myCarousel .carousel-item .mask img{-webkit-animation-duration: 1s;
+    animation-duration: 1.2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+#myCarousel .container {max-width: 1430px;  }
+#myCarousel .carousel-item{height:100%; min-height:550px; }
+#myCarousel{position:relative; z-index:1; background:url(https://i.imgur.com/6axE29k.jpg) center center no-repeat; background-size:cover; }
+
+.carousel-control-next, .carousel-control-prev{height:40px; width:40px; padding:12px; top:50%; bottom:auto; transform:translateY(-50%); background-color: #f47735; }
+
+
+.carousel-item {
+    position: relative;
+    display: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    transition: -webkit-transform .6s ease;
+    transition: transform .6s ease;
+    transition: transform .6s ease,-webkit-transform .6s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+.carousel-fade .carousel-item {
+	opacity: 0;
+	-webkit-transition-duration: .6s;
+	transition-duration: .6s;
+	-webkit-transition-property: opacity;
+	transition-property: opacity
+}
+.carousel-fade .carousel-item-next.carousel-item-left, .carousel-fade .carousel-item-prev.carousel-item-right, .carousel-fade .carousel-item.active {
+	opacity: 1
+}
+.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-right.active {
+	opacity: 0
+}
+.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+	-webkit-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0)
+}
+@supports (transform-style:preserve-3d) {
+	.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+	-webkit-transform:translate3d(0, 0, 0);
+	transform:translate3d(0, 0, 0)
+	}
+}
+.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+
+ 
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+}
+
+
+  </style>
+  <div class="search" style="padding: 100px; background-color: #d5d5d5 !important;">
+      <center><h3>Search goes here....</h3></center>
   </div>
+  <div class="line" style="margin-top: 4rem; ">
+    <h2 class='lineUp text-center'>Available cities and towns</h2>
+  </div>
+<div class="container" style="margin-top: 3rem;">
+<div class="row">
+    <div class="col" style="column-count: 1">
+        <ul class="text-center">
+            <a class="btn btn-secondary" href="#" role="button">Nairobi</a>
+            <a class="btn btn-secondary" href="#" role="button">Mombasa</a>
+            <a class="btn btn-secondary" href="#" role="button">Nakuru</a>
+            <a class="btn btn-secondary" href="#" role="button">Kisumu</a>
+            <a class="btn btn-secondary" href="#" role="button">Meru</a>
+            <a class="btn btn-secondary" href="#" role="button">Machakos</a>   
+        </ul>
+        </div>
+    </div>
+</div>
+
+<!--carousel-->
+<script>
+     $('#myCarousel').carousel({
+    interval: 3000,
+ })
+</script>
+
+<!--chat bot-->
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"3b2426883116578d6013941155596d11c","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
 <div class="footer">
     {% include "home/footer.html" %}
 </div>
