@@ -12,7 +12,11 @@ from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 from .forms import  DriverSignUpForm,PassengerSignUpForm
 from .models import  Driver, User,Passenger
+from django.views.generic import TemplateView
 
+
+class SignUpView(TemplateView):
+    template_name = 'registration/signup.html'
 
 
 class DriverSignUpView(CreateView):

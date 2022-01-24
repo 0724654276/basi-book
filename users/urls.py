@@ -3,7 +3,7 @@ from . import views
 app_name = "users"
 urlpatterns = [
 
-    path("customer", views.customer, name="customer"),
+    path("passenger", views.passenger, name="passenger"),
     path("driver", views.driver, name="driver"),
     
 ]
