@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<body>
+  
+      <center><h2 style="margin-top: 3rem;">Sign up as a {{ user_type }}</h2></center>
+      <div class="container">
+      <form method="post" novalidate >
+        {% csrf_token %}
+        
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form|crispy }}
+       
+        <button type="submit" class="btn btn-success">Sign up</button>
+      </form>
+
+<!-- Facebook -->
+
+    </div>
+    
+  </div>
+  
+  </div>
+  </body>
+  <style>
+        body {
+       background-color: #e8e8e4;
+   }
+  </style>
+{% endblock %}
