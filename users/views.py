@@ -14,6 +14,7 @@ from .forms import  DriverSignUpForm,PassengerSignUpForm
 from .models import  Driver, User,Passenger
 
 
+
 class DriverSignUpView(CreateView):
     """[class view]
 
