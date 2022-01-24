@@ -28,4 +28,25 @@ class PassengerSignUpForm(UserCreationForm):
         return user
 
 
+class DriverSignUpForm(UserCreationForm):
+    """[driver class]
+
+    Args:
+        UserCreationForm ([form]): [create a form from driver model class]
+
+    Returns:
+        [class method]: [method to safe the form]
+    """
+    class Meta(UserCreationForm.Meta):
+        model = User
+
+    @transaction.atomic
+    def save(self):
+        user = super().save(commit=False)
+        user.is_driver = True
+        user.save()
+        driver = Driver.objects.create(user=user)
+        return user
+
+
 
