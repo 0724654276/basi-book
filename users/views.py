@@ -10,10 +10,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
-from .forms import  DriverSignUpForm,PassengerSignUpForm
-from .models import  Driver, User,Passenger
+from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm
+from .models import  Driver, User,Passenger,BusModel
 from django.views.generic import TemplateView
-
 
 class SignUpView(TemplateView):
     template_name = 'registration/signup.html'
@@ -51,7 +50,18 @@ def driver(request):
         [template]: [render a template[driver]]
     """
     current_user = request.user
-    return render(request,'drivers/driver.html')    
+
+    user_profile = BusModel.objects.all()
+    if request.method == 'POST':
+        form = BusForm(request.POST,request.FILES)
+        if form.is_valid:
+            new_bus = form.save(commit = False)
+            #new_proj.user = user_profile
+            new_bus.save()
+        return redirect('users:driver')  
+    else:
+        form = BusForm()
+    return render(request,'drivers/driver.html',{'form':form})    
 
 class PassengerSignUpView(CreateView):
     """[class view]

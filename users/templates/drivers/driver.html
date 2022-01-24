@@ -7,7 +7,16 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-<h3>You are viewing drivers</h3>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  
+    <fieldset class="form-group">Create Post
+       <div class="form-group">{{ form }}</div>
+    </fieldset>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Post</button>
+    </div>
+</form>
 {% include "home/footer.html" %}
 {% include "home/chatbot.html" %}
 {% endblock %}

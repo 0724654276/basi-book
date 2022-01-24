@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.forms.utils import ValidationError
 from django.forms import TextInput
-from .models import User,Driver,Passenger
+from .models import User,Driver,Passenger,BusModel
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
@@ -48,5 +48,13 @@ class DriverSignUpForm(UserCreationForm):
         driver = Driver.objects.create(user=user)
         return user
 
-
+class BusForm(forms.ModelForm):
+    """
+    model form to post bus
+    Args:
+        forms (model): [class to help in creating the model form]
+    """
+    class Meta:
+        model = BusModel
+        fields = "__all__"
 
