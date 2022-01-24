@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User 
 # Create your models here.
-class BookModel(models.Model):
+'''class BookModel(models.Model):
     """[BookModel]
 
     Args:
@@ -21,4 +21,4 @@ class BookModel(models.Model):
         return self.user_requesting + from_location
 
 
-    
+    '''

@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'Basi',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -73,15 +75,24 @@ WSGI_APPLICATION = 'Bus.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+
 }
+'''
 
-
+DATABASES = {
+    'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'basi',
+        'USER': 'patrick',
+    'PASSWORD':'flower2',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -120,9 +131,9 @@ LOGIN_URL = 'login'
 
 LOGOUT_URL = 'logout'
 
-LOGIN_REDIRECT_URL = 'basi:home'
+LOGIN_REDIRECT_URL = 'Basi:home'
 
-LOGOUT_REDIRECT_URL = 'basi:home'
+LOGOUT_REDIRECT_URL = 'Basi:home'
 
 
 # Static files (CSS, JavaScript, Images)

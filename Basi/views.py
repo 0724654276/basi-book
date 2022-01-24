@@ -19,4 +19,12 @@ def home(request):
             return redirect(reverse_lazy('users:passenger'))
         else:
             return redirect('users:driver')
-    return render(request, 'home/home.html')
+    return render(request, "home/home.html")
+
+def index(request):
+    """[summary]
+
+    Args:
+        request ([type]): [description]
+    """
+    return render(request, "home/index.html")
