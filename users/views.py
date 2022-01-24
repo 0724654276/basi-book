@@ -80,5 +80,5 @@ def passenger(request):
     Returns:
         [template]: [render customer page]
     """
-    return render(request, "customer/customer.html", context)
+    return render(request, "customer/customer.html")
 
