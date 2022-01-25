@@ -8,7 +8,7 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-
+    <a class="nav-link" href="{% url 'logout' %}">Logout</i></a>
   </div>
   <section class="pt-5 pb-5">
     <div class="container">
@@ -48,8 +48,9 @@
                                 {{form.image|as_crispy_field}}
                                 {{form.location|as_crispy_field}}
                                 {{form.seats|as_crispy_field}}
-                                {{form.num_plate|as_crispy_field}}
-                                {{form.id_num|as_crispy_field}}
+                                {{form.first_class|as_crispy_field}}
+                                {{form.second_class|as_crispy_field}}
+                                {{form.regular_class|as_crispy_field}}
                                 {{form.route|as_crispy_field}}
                                 {{form.phone_num|as_crispy_field}}
                                
