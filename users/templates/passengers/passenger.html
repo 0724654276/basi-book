@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %} 
+{% include "home/navbar.html" %}
+<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    <strong>Hello {{user.username}}: </strong>Scroll to view available buses
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+  <a class="nav-link" href="{% url 'logout' %}">Logout</i></a>
+<div class="search" style="padding: 150px; background-color: wheat;">
+    <center><h3>Search area.....</h3></center>
+</div>
+<div class="apply" style="padding: 250px; background-color:#212529;">
+<center><h3 style="color: white;">Passenger order area ie form and other things</h3></center></div>
+<div class="text-center">
+  <h3>Schedule a bus</h3>
+  <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+  {{ form.date }}
+  <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'DD/MM/YYYY HH:mm',
+    });
+  });
+</script>
+</div>
+
+<div class="text-center"><h3>Popular buses</h3></div>
+<div class="container-fluid mt-5">
+    <div class="px-lg-5">
+      <div class="row">
+        <!-- Gallery item -->
+        {%for bus in bus%}
+        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+          
+          <div class="bg-white rounded shadow-sm">
+            <p style="margin: 0.5rem;" class="mr-2" href=""></i>Driver: {{bus.user }}</p>
+            <a href="/project/{{project.id}}">
+              <img
+                src="{{ bus.image.url }}"
+                alt=""
+                class="img-fluid card-img-top"
+              />
+            </a>
+            <div class="p-4">
+              <h5><a href="#" class="text-dark">Route: {{ bus.route }}
+              </p></a></h5>
+              <p class="small text-muted mb-0">Location: {{bus.location}}</p>
+              <p class="small text-muted mb-0">Seats: {{bus.seats}}</p>
+          
+            
+             
+                 <small style="opacity: 0.8; " class="white-important d-flex full-width ">
+                  Added on: {{ bus.date_posted | date:"H:i l, d.m.y" }}
+               </small>
+              <div
+                class="
+                  d-flex
+                  align-items-center
+                  justify-content-between
+                  rounded-pill
+                  px-3
+                  py-2
+                  mt-4
+                "
+              >
+              
+                <a  style="color: white;" href=""><div
+                  class="badge badge-primary px-3 rounded-pill font-weight-normal"
+                >View</a></div>
+                <a style="color: white;" href=""><div
+                  class="badge badge-success px-3 rounded-pill font-weight-normal"
+                >Blog</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+        <!-- End -->
+      </div>
+    </div>
+  </div>
+  <div class="fare-chart" style="padding: 300px; background-color: #212529;">
+<center><h3 style="color: white;">Fare chat and other FAQS</h3></center></div>
+
+            <!-- End -->
+     
+      
+
+<div class="footer">
+    {% include "home/footer.html" %}
+    </div>
+    {% include "home/chatbot.html" %}
+    
+{% endblock %}
