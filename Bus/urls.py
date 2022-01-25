@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("users.urls", namespace="users")),
     path("", include("Basi.urls", namespace="Basi")),
+    path("", include("profileApp.urls", namespace="profileApp")),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.SignUpView.as_view(), name='signup'),
     path('accounts/signup/driver/', views.DriverSignUpView.as_view(), name='driver_signup'),

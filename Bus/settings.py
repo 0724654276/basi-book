@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Basi',
     'bootstrap4',
     'crispy_forms',
+    'profileApp',
 
 ]
 
