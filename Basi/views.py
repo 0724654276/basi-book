@@ -10,6 +10,8 @@ def home(request):
         return render(request, 'index.html')
 
 
+
+
 def findbus(request):
     context = {}
     if request.method == 'POST':
