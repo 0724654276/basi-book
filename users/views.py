@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm
-from .models import  Driver, User,Passenger,BusModel
+from .models import  Driver, User,Passenger,BusModel,BusModel
 from django.views.generic import TemplateView
 
 class SignUpView(TemplateView):
@@ -95,5 +95,8 @@ def passenger(request):
     Returns:
         [template]: [render customer page]
     """
-    return render(request, "passengers/passenger.html")
+    context = {
+        "bus": BusModel.objects.all()
+    }
+    return render(request, "passengers/passenger.html", context)
 
