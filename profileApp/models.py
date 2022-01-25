@@ -6,7 +6,7 @@ from django.db import models
 from django.db import models
 
 from PIL import Image
-from cloudinary.models import CloudinaryField
+
 from users.models import User
 class Profile(models.Model):
     """[profile class]
