@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<body>
+<div class="container" style="margin-top: 5rem;">
+
+  {% if form.non_field_errors %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {% for error in form.non_field_errors %}
+        <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
+      {% endfor %}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endif %}
+ 
+     <center><h4>Welcome to BusChap login,<br>Your first step in the world of travel!</h4>
+     
+      <div class="card">
+      <form method="post" novalidate class="form-control">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form.username|as_crispy_field }}
+        {{ form.password|as_crispy_field }}
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
+    </div></div>
+  </div>
+<style>
+          body {
+       background-color: #e8e8e4;
+   }
+</style></body>
+{% endblock %}
