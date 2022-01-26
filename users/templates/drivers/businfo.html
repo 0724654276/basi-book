@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid mt-5">
+    <div class="px-lg-5">
+      <div class="row">
+        <!-- Gallery item -->
+        {%for bus in bus%}
+        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+          
+          <div class="bg-white rounded shadow-sm">
+            <p style="margin: 0.5rem;" class="mr-2" href=""><i class="fas fa-house-user"></i>Route: {{ bus.pickup_point}}</p>
+            <a href="/project/{{project.id}}">
+              <img
+                src="{{ post.image.url }}"
+                alt=""
+                class="img-fluid card-img-top"
+              />
+            </a>
+            <div class="p-4">
+              <h5><a href="#" class="text-dark"> {{bus.user }}
+              </p></a></h5>
+              <p class="small text-muted mb-0">bussiness_seats: {{bus.bussiness_seats}}</p>
+              <p class="small text-muted mb-0">phone: {{bus.phone_num}}</p>
+              
+              <a href="" class="btn btn-danger">Delete </a></a>
+               </a></p>
+             
+                 <small style="opacity: 0.8; " class="white-important d-flex full-width flex-row-reverse">
+                  Added on: {{ bus.date_posted | date:"H:i l, d.m.y" }}
+               </small>
+              <div
+                class="
+                  d-flex
+                  align-items-center
+                  justify-content-between
+                  rounded-pill
+                  px-3
+                  py-2
+                  mt-4
+                "
+              >
+                <p class="small mb-0">
+                  <i class="fa fa-picture-o mr-2"></i
+                  ><span class="font-weight-bold">Location: {{post.location}}</span>
+                </p>
+                <div
+                  class="badge badge-primary px-3 rounded-pill font-weight-normal"
+                ></div>
+                <div
+                  class="badge badge-success px-3 rounded-pill font-weight-normal"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+        <!-- End -->
+      </div>
+    </div>
+  </div>
+  
+
+
+
+{% endblock %}

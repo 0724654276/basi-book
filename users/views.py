@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm
-from .models import  Driver, User,Passenger,BusModel,BusModel
+from .models import  Driver, User,Passenger,Bus
 from django.views.generic import TemplateView
 
 class SignUpView(TemplateView):
@@ -50,14 +50,17 @@ def driver(request):
         [template]: [render a template[driver]]
     """
     current_user = request.user
-
-    user_profile = BusModel.objects.all()
+    user_profile = Bus.objects.all()
     if request.method == 'POST':
+        print("Hello")
         form = BusForm(request.POST,request.FILES)
-        if form.is_valid:
+        if form.is_valid():
+            print("Is valid")
             new_bus = form.save(commit = False)
             #new_proj.user = user_profile
             new_bus.save()
+           
+            print(new_bus.__dict__)
         return redirect('users:driver')  
     else:
         form = BusForm()
@@ -96,7 +99,25 @@ def passenger(request):
         [template]: [render customer page]
     """
     context = {
-        "bus": BusModel.objects.all()
+        "bus": Bus.objects.all()
     }
     return render(request, "passengers/passenger.html", context)
 
+def buspage(request):
+    context = {
+        "bus":Bus.objects.all()
+    }
+    return render(request, "drivers/businfo.html",context)
+
+@login_required(login_url='login')
+def deletebus(request, pk):
+    post = Bus.objects.get(id=pk)
+
+    if request.user != bus.user:
+        return HttpResponse('You are not allowed')
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('Basi:driver')
+ 
+    return render(request, 'driver.html', {'obj':post})
