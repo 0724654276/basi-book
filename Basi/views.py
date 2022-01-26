@@ -28,12 +28,9 @@ def index(request):
         request ([type]): [description]
     """
     return render(request, "home/index.html")
-<<<<<<< HEAD
 def about(request):
     return render(request, "home/about.html")
-=======
 
 
 def register(request):
     return render (request,"home/register.html")
->>>>>>> 79c49fd (add register)
