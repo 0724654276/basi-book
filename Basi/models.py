@@ -1,4 +1,6 @@
+from unittest.util import _MAX_LENGTH
 from django.db import models
+from users.models import Route,Bus,Seats
 
 # Create your models here.
 
@@ -14,6 +16,10 @@ class Busi(models.Model):
     
     def delete_bus(self):
         self.delete()
-    
 
-        
+class Ticket(models.Model):
+    route_id=models.ForeignKey(Route,on_delete=models.CASCADE)        
+    bus_id = models.ForeignKey(Bus, on_delete=models.CASCADE)
+    seat_id = models.ForeignKey(Seats, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    id_no = models.IntegerField(default=1)

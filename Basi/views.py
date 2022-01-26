@@ -3,7 +3,7 @@ import imp
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView
-from models import Busi
+from .models import Busi
 from django.views.generic import DeleteView
 
 # Create your views here.
