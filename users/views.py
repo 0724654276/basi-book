@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm
-from .models import  Driver, User,Passenger,BusModel,BusModel
+from .models import  Driver, User,Passenger,Bus,Bus
 from django.views.generic import TemplateView
 
 class SignUpView(TemplateView):
@@ -51,7 +51,7 @@ def driver(request):
     """
     current_user = request.user
 
-    user_profile = BusModel.objects.all()
+    user_profile = Bus.objects.all()
     if request.method == 'POST':
         form = BusForm(request.POST,request.FILES)
         if form.is_valid:
@@ -96,7 +96,7 @@ def passenger(request):
         [template]: [render customer page]
     """
     context = {
-        "bus": BusModel.objects.all()
+        "bus": Bus.objects.all()
     }
     return render(request, "passengers/passenger.html", context)
 

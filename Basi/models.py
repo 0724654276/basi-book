@@ -1,7 +1,6 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
-from users.models import Route,Bus,Seats
-
+from users.models import Route,Bus
 from django.utils import timezone
 from django.contrib.auth.models import User 
 # Create your models here.
@@ -22,6 +21,6 @@ class Busi(models.Model):
 class Ticket(models.Model):
     route_id=models.ForeignKey(Route,on_delete=models.CASCADE)        
     bus_id = models.ForeignKey(Bus, on_delete=models.CASCADE)
-    seat_id = models.ForeignKey(Seats, on_delete=models.CASCADE)
+    #seat_id = models.ForeignKey(Seats, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     id_no = models.IntegerField(default=1)

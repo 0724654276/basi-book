@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'Basi',
     'bootstrap4',
     'crispy_forms',
+    'profileApp',
+    'sass_processor',
+    'blog',
 
 ]
 
@@ -91,9 +94,9 @@ DATABASES = {
 DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'basi',
-        'USER': 'patrick',
-    'PASSWORD':'flower2',
+        'NAME': 'nganya',
+        'USER': 'synthia',
+    'PASSWORD':'123',
     }
 }
 # Password validation
@@ -161,3 +164,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+SASS_PROCESSOR_ROOT = STATIC_ROOT
