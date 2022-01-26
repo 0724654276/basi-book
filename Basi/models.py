@@ -4,23 +4,16 @@ from django.db import models
 
 class Busi(models.Model):
     
-    bus = models.OneToOneField(Bus, on_delete=models.CASCADE)
+
+    bus_name = models.CharField(max_length=25)
+
     image = models.ImageField(default='bus.jpg', upload_to='bus_pics')
 
     def __str__(self):
         return f'{self.bus.busname} Bus' 
     
-    def save_profile(self):
-        super().save()
-
-    @classmethod
-    def get_bus(cls):
-        bus = Busi.objects.all()
-        return Busi
-
-    @classmethod
-    def find_bus(cls,search_term):
-        bus = Busi.objects.filter(bus__busname__icontains=search_term)
-        return bus
+    def delete_bus(self):
+        self.delete()
+    
 
         
