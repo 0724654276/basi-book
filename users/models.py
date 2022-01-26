@@ -28,6 +28,7 @@ class Driver(models.Model):
     def __str__(self):
         return self.user.username
 
+
 class Passenger(models.Model):
     """[Passenger model]
 
@@ -38,6 +39,7 @@ class Passenger(models.Model):
         [python string]: [stringify the user[passenger] object]
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    schedule = models.DateTimeField()
     
  
     def __str__(self):
