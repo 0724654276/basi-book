@@ -42,7 +42,20 @@ class Passenger(models.Model):
     def __str__(self):
         return self.user.username
 
-class BusModel(models.Model):
+
+class Route(models.Model):
+    """[summary]
+
+    Args:
+        models ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
+    destination = models.CharField(max_length=100, blank=True)
+    pickup_point = models.CharField(max_length=100, blank=True)
+
+class Bus(models.Model):
     """[BookModel]
 
     Args:
@@ -51,17 +64,17 @@ class BusModel(models.Model):
     Returns:
         [modelDatabase]: [Create table from python class]
     """
+    class Seats(models.TextChoices):
+        vip_seat = '1', "VIP"
+        business = '2', "BUSSINESS"
+        economy = '3', "ECONOMY"
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='bus_pics/')
-    location = models.CharField(max_length=100, blank=True)
-    seats = models.CharField(max_length=100, blank=True)
-    first_class = models.CharField(max_length=100, blank=True)
-    second_class = models.CharField(max_length=100, blank=True)
-    regular_class = models.CharField(max_length=100, blank=True)
+  
+    user = models.ForeignKey(User.username, on_delete=models.CASCADE)
+    route_id = models.ForeignKey(Route, on_delete=models.CASCADE)
+    schedule = models.DateTimeField(default=null)
+    seats = models.CharField(max_length=9,choices = Seats.choices,default=Seats.business)
     num_plate = models.CharField(max_length=100,blank=True)
-    id_num = models.CharField(max_length=100, blank=True)
-    route = models.CharField(max_length=100, blank=True)
     phone_num = models.CharField(max_length=100,blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
   
