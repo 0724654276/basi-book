@@ -32,3 +32,7 @@ def index(request):
 
 def about(request):
     return render(request,"home/about.html")
+
+
+def routes(request):
+    return render(request,"home/routes.html")

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% include "home/navbar_driver.html" %}
+{% include "home/navbar.html" %}
 <div class="we-are-block">
 
     <div id="about-us-section">
@@ -19,8 +19,8 @@
                 Basi Book is a traveling solution that helps the hundreds of people travel in and out of Nairobi. The app shows the available busses for travel and the spesific time the bus will be moving. This helps avoid the inconvinience especially in the high peak seasons where busses might be unavailable.Basi book also helps bus companies to keep records and maintain of information in general.
                 This web app  will deal with maintenance of records of details of each passenger who has reserved a seat for a journey. It also includes maintenance of information like schedule and details of each bus. It will be helpful for bus operators, who want to operate many bus trips in a day. It will be focused on customers, drivers and an administrator who oversees the whole process.            </p>
         </div>
-        
-    </div>  
+        <a class="btn btn-primary" id="button" href="{% url 'Basi:index' %}" style="background-color: orange; border-color: orange; margin-top:550px ;" role="button"><span>Exit</span></a>
+        </div>  
 </div>
 {% include "home/footer.html" %}
 </div>
