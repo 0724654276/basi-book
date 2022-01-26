@@ -98,8 +98,5 @@ def passenger(request):
     context = {
         "bus": BusModel.objects.all()
     }
-    timestamp = "{t.year}/{t.month:02d}/{t.day:02d} - {t.hour:02d}:{t.minute:02d}:{t.second:02d}"
-
     return render(request, "passengers/passenger.html", context)
-      
 
