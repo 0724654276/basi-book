@@ -28,3 +28,5 @@ def index(request):
         request ([type]): [description]
     """
     return render(request, "home/index.html")
+def about(request):
+    return render(request, "home/about.html")
