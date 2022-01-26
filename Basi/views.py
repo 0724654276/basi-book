@@ -8,7 +8,7 @@ from django.views.generic import DeleteView
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView
-
+from users.models import Bus
 # Create your views here.
 
 def home(request):
@@ -52,3 +52,14 @@ def index(request):
         request ([type]): [description]
     """
     return render(request, "index.html")
+class TicketView():
+    """
+    view class to book a bus
+    """
+    model = Bus
+    fields = "__all__"
+    template_name = 'ticket.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
