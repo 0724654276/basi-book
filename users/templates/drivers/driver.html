@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load crispy_forms_tags %} 
+{% include "home/navbar.html" %}
+<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    <strong>Hello {{user.username}}: </strong>Upload your bus info for passengers to see
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <a class="nav-link" href="{% url 'logout' %}">Logout</i></a>
+  </div>
+  <section class="pt-5 pb-5">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-md-6   mt-4 mt-md-0">
+          <img alt="image" class="img-fluid rounded d-block mx-auto shadow aos-init" data-aos="fade-right" data-aos-offset="300" src="https://media.istockphoto.com/photos/confident-young-africanamerica-in-public-transport-picture-id1318602154?b=1&k=20&m=1318602154&s=170667a&w=0&h=_rIKhZr4w6iAS3zpTt8_hAG5sbGfAJ-cSU3FniNNRhU=">
+        </div>
+        <div class="col-12 col-md-5">
+          <h2 data-aos="fade-up" class="aos-init">Welcome {{user.username}}</h2>
+          <p class="text-h3 mt-3 lead aos-init" data-aos="fade-up">We are so happy to have you here.Your journey with us has just began.</p>
+          <ol class="list-unstyled mt-4">
+            <li class="d-flex mb-2 mt-2 aos-init" data-aos="fade-up">
+              <i class="fas fa-check-circle fa-lg text-info mr-1 mt-2 mb-2 ml-0" aria-hidden="true"></i><span class="pl-2 pt-1">Post your bus</span></li>
+            <li class="d-flex mb-2 mt-2 aos-init" data-aos="fade-up">
+              <i class="fas fa-check-circle fa-lg text-info mr-1 mt-2 mb-2 ml-0" aria-hidden="true"></i><span class="pl-2 pt-1">Wait for onboarders</span></li>
+              <div class="model-form">
+                <div class="container">
+                  <center><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">
+                      Add your Bus
+                    </button>  </center>
+                  </div>
+                  
+                  <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header border-bottom-0">
+                          <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                                   <div class="modal-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                              
+                                {{form.user|as_crispy_field}}
+                                {{form.image|as_crispy_field}}
+                                {{form.location|as_crispy_field}}
+                                {{form.seats|as_crispy_field}}
+                                {{form.first_class|as_crispy_field}}
+                                {{form.second_class|as_crispy_field}}
+                                {{form.regular_class|as_crispy_field}}
+                                {{form.route|as_crispy_field}}
+                                {{form.phone_num|as_crispy_field}}
+                               
+                                {{form.date_posted|as_crispy_field}}
+                              
+                          <div class="modal-footer border-top-0 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="location-chats" style="padding: 200px; background-color: #212529;">
+    <center><h3 style="color: wheat;">Location based on driver and chats associated here.....</h3></center>
+  </div>
+  
+
+<div class="footer">
+{% include "home/footer.html" %}
+</div>
+{% include "home/chatbot.html" %}
+
+
+
+
+
+{% endblock %}

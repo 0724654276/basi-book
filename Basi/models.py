@@ -2,6 +2,8 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from users.models import Route,Bus,Seats
 
+from django.utils import timezone
+from django.contrib.auth.models import User 
 # Create your models here.
 
 class Busi(models.Model):
