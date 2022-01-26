@@ -5,7 +5,6 @@
 <body>
     <div class="header">
 {% include "home/navbar.html" %}
-<a class="nav-link" href="{% url 'logout' %}">Logout</i></a>
 </div>
 <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
@@ -21,6 +20,7 @@
                 <a href="#">About</a> </div>
               <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://media.istockphoto.com/photos/coach-bus-picture-id540124958?b=1&k=20&m=540124958&s=170667a&w=0&h=-cmvnjGO8MD-JGItYBoxsekoRlj4Wy93obx6YH5UWBU=" class="mx-auto" alt="slide"></div>
             </div>
+            <hr>
           </div>
         </div>
       </div>
@@ -31,25 +31,25 @@
               <div class="col-md-7 col-12 order-md-1 order-2">
                 <h4>Community and support<br>
                   Join our blog</h4>
-                <p>You can report any abuse or incident at our <strong>BusChap</strong>blog.All you need is to create an account and starting talking with other communters!</p>
-                <a href="#">Blog</a> </div>
-              <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://media.istockphoto.com/photos/social-media-and-digital-online-concept-woman-using-smartphone-picture-id1288271580?b=1&k=20&m=1288271580&s=170667a&w=0&h=T5tNQeD6dQ7o-PmpZR-ymGDSHvpyj-AEyeRuSNEWE8Q=" class="mx-auto" alt="slide"></div>
+                  <p>You can report any abuse or incident at our <strong>BusChap</strong>blog.All you need is to create an account and starting talking with other communters!</p>
+                  <a href="#">Blog</a> </div>
+                  <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://media.istockphoto.com/photos/social-media-and-digital-online-concept-woman-using-smartphone-picture-id1288271580?b=1&k=20&m=1288271580&s=170667a&w=0&h=T5tNQeD6dQ7o-PmpZR-ymGDSHvpyj-AEyeRuSNEWE8Q=" class="mx-auto" alt="slide"></div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
       <div class="carousel-item">
         <div class="mask flex-center">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-md-7 col-12 order-md-1 order-2">
                 <h4>Here you are, <br>
-                One step away from the traveling in convenience</h4>
-                <p>Sign up with a driver or passenger account to use BusChap.Easy,convenient and completely free!</p>
-                <a href="#">Login or signup</a> </div>
-              <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YnVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" class="mx-auto" alt="slide"></div>
-            </div>
-          </div>
+                  One step away from the traveling in convenience</h4>
+                  <p>Sign up with a driver or passenger account to use BusChap.Easy,convenient and completely free!</p>
+                  <center><a class="btn btn-primary" id="button" href="{% url 'driver_signup' %}" role="button"><span>Driver account</span></a><a style="margin-left: 2rem;" class="btn btn-primary" href="{% url 'passenger_signup' %}" id="button" role="button"><span>Traveller account</span></a></center>
+                  <div class="col-md-5 col-12 order-md-2 order-1" style="margin-left: 1000px ;margin-bottom: 700px;"><img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YnVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" class="mx-auto" alt="slide"></div>
+                </div>
+              </div>
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@
 
 body {
 	font-family: 'Raleway', sans-serif;
-	background-color: #212529;
+	background-color: #051525;
 }
 
 /*carousel*/
@@ -273,24 +273,22 @@ body {
 
 
   </style>
-  <div class="search" style="padding: 100px; background-color: #d5d5d5 !important;">
-      <center><h3>Search goes here....</h3></center>
-  </div>
-  <div class="line" style="margin-top: 4rem; ">
-    <h2 class='lineUp text-center'>Available cities and towns</h2>
-  </div>
-<div class="container" style="margin-top: 3rem;">
-<div class="row">
-    <div class="col" style="column-count: 1">
-        <ul class="text-center">
+  
+  <div class="line" style="padding: 100px; background-color: #d5d5d5 !important;">
+    <h2 class='lineUp text-center' style="color: #051525;">View Routes</h2>
+    <div class="container" style="margin-top: 3rem;">
+      <div class="row">
+        <div class="col" style="column-count: 1">
+          <ul class="text-center">
             <a class="btn btn-secondary" href="#" role="button">Nairobi</a>
             <a class="btn btn-secondary" href="#" role="button">Mombasa</a>
             <a class="btn btn-secondary" href="#" role="button">Nakuru</a>
             <a class="btn btn-secondary" href="#" role="button">Kisumu</a>
             <a class="btn btn-secondary" href="#" role="button">Meru</a>
             <a class="btn btn-secondary" href="#" role="button">Machakos</a>   
-        </ul>
+          </ul>
         </div>
+      </div>
     </div>
 </div>
 
