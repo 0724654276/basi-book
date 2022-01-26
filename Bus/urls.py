@@ -28,6 +28,7 @@ urlpatterns = [
     path('accounts/signup/', views.SignUpView.as_view(), name='signup'),
     path('accounts/signup/driver/', views.DriverSignUpView.as_view(), name='driver_signup'),
     path('accounts/signup/customer/', views.PassengerSignUpView.as_view(), name='passenger_signup'),
+    path("", include("blog.urls", namespace="blog")),
 ]
 if settings.DEBUG:
     urlpatterns += static(
