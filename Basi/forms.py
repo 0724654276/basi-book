@@ -1,5 +1,5 @@
 from django import forms
-from models import Bus
+from models import  Ticket
 class BusForm(forms.ModelForm):
     """
     model form to post bus
@@ -7,5 +7,5 @@ class BusForm(forms.ModelForm):
         forms (model): [class to help in creating the model form]
     """
     class Meta:
-        model = Bus
+        model = Ticket
         fields = "__all__"
