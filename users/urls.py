@@ -7,5 +7,6 @@ urlpatterns = [
     path("driver", views.driver, name="driver"),
     #path("", views.home, name="home")
     path("buspage", views.buspage, name="buspage"),
-    path('deletebus/<int:pk>/', views.deleteBus, name='deletebus'),
+    path('deletebus/<int:id>/', views.deletebus, name='deletebus'),
+    path('updatebus/<int:pk>/', views.updatebus, name='updatebus'),
 ]

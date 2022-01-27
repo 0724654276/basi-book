@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from django.http import HttpResponse
 # Create your views here.
 from django.contrib import messages
 from django.contrib.auth import login
@@ -110,14 +111,40 @@ def buspage(request):
     return render(request, "drivers/businfo.html",context)
 
 @login_required(login_url='login')
-def deletebus(request, pk):
-    post = Bus.objects.get(id=pk)
+def deletebus(request, id):
+    """bus = Bus.objects.get(id=pk)
 
     if request.user != bus.user:
         return HttpResponse('You are not allowed')
 
     if request.method == 'POST':
-        post.delete()
-        return redirect('Basi:driver')
- 
-    return render(request, 'driver.html', {'obj':post})
+        bus.delete()
+        return redirect('Basi:index')
+        """
+    bus = Bus.objects.get(id=id)
+    print("got id")
+    if request.method == "GET":
+        print("got post")
+        bus.delete()
+        return redirect("Basi:index")
+    context = {
+        "bus": bus
+    }
+    return render(request, 'drivers/driver.html', context)
+@login_required(login_url='login')
+def updatebus(request, pk):
+    bus = Bus.objects.get(id=pk)
+    form = BusForm(instance=bus)
+
+    if request.user != bus.user:
+        return HttpResponse('You are not allowed')
+
+    if request.method == 'POST':
+        form = BusForm(request.POST, instance=bus)
+        if form.is_valid():
+            form.save()
+            return redirect('users:driverpage')
+    context = {
+        'form':form
+    }
+    return render(request, 'drivers/bus_form.html', context)

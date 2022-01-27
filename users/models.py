@@ -93,4 +93,10 @@ class Bus(models.Model):
         return str(self.user)
 
 
+    @classmethod
+    def delete_bus(cls, hood_name):
+        cls.objects.filter(hood_name=hood_name).delete()
     
+    def update_bus(self, hood_name):
+        self.hood_name = hood_name
+        self.save()

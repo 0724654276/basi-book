@@ -1,0 +1,10 @@
+
+{% load crispy_forms_tags %} 
+<form method="POST" action="/driver"  enctype="multipart/form-data">
+    {% csrf_token %}
+{{form|crispy}}
+     
+<div class="modal-footer border-top-0 d-flex justify-content-center">
+<button type="submit" class="btn btn-success">Submit</button>
+</div>
+</form>

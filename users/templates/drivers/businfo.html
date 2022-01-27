@@ -21,8 +21,13 @@
               </p></a></h5>
               <p class="small text-muted mb-0">bussiness_seats: {{bus.bussiness_seats}}</p>
               <p class="small text-muted mb-0">phone: {{bus.phone_num}}</p>
-              
-              <a href="" class="btn btn-danger">Delete </a></a>
+             
+            <a href="{% url 'users:updatebus' bus.id %}"><span class="badge bg-secondary">edit</span></a>
+            
+            <a href="{% url 'users:deletebus' bus.id %}" class="btn btn-danger">Delete </a></a>
+            <span class="badge bg-success">Success</span>
+
+
                </a></p>
              
                  <small style="opacity: 0.8; " class="white-important d-flex full-width flex-row-reverse">
@@ -58,7 +63,7 @@
       </div>
     </div>
   </div>
-  
+  <a href="{% url 'users:driver' %}">driver</a>
 
 
 
