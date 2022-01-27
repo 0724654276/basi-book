@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from django.http import HttpResponse
 # Create your views here.
 from django.contrib import messages
 from django.contrib.auth import login
@@ -11,7 +12,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm
-from .models import  Driver, User,Passenger,Bus,Bus
+from .models import  Driver, User,Passenger,Bus
 from django.views.generic import TemplateView
 
 class SignUpView(TemplateView):
@@ -50,14 +51,17 @@ def driver(request):
         [template]: [render a template[driver]]
     """
     current_user = request.user
-
     user_profile = Bus.objects.all()
     if request.method == 'POST':
+        print("Hello")
         form = BusForm(request.POST,request.FILES)
-        if form.is_valid:
+        if form.is_valid():
+            print("Is valid")
             new_bus = form.save(commit = False)
             #new_proj.user = user_profile
             new_bus.save()
+           
+            print(new_bus.__dict__)
         return redirect('users:driver')  
     else:
         form = BusForm()
@@ -100,3 +104,47 @@ def passenger(request):
     }
     return render(request, "passengers/passenger.html", context)
 
+def buspage(request):
+    context = {
+        "bus":Bus.objects.all()
+    }
+    return render(request, "drivers/businfo.html",context)
+
+@login_required(login_url='login')
+def deletebus(request, id):
+    """bus = Bus.objects.get(id=pk)
+
+    if request.user != bus.user:
+        return HttpResponse('You are not allowed')
+
+    if request.method == 'POST':
+        bus.delete()
+        return redirect('Basi:index')
+        """
+    bus = Bus.objects.get(id=id)
+    print("got id")
+    if request.method == "GET":
+        print("got post")
+        bus.delete()
+        return redirect("users:buspage")
+    context = {
+        "bus": bus
+    }
+    return render(request, 'drivers/driver.html', context)
+@login_required(login_url='login')
+def updatebus(request, pk):
+    bus = Bus.objects.get(id=pk)
+    form = BusForm(instance=bus)
+
+    if request.user != bus.user:
+        return HttpResponse('You are not allowed')
+
+    if request.method == 'POST':
+        form = BusForm(request.POST, instance=bus)
+        if form.is_valid():
+            form.save()
+            return redirect('users:buspage')
+    context = {
+        'form':form
+    }
+    return render(request, 'drivers/bus_form.html', context)

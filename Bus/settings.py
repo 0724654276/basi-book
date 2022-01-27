@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'profileApp',
     'sass_processor',
     'blog',
+    'bootstrap_datepicker_plus',
 
 ]
 

@@ -25,9 +25,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("Basi.urls", namespace="Basi")),
-    path("", include("profileApp.urls", namespace="profileApp")),
+    path("profile/", include("profileApp.urls", namespace="profileApp")),
     path('accounts/', include('django.contrib.auth.urls')),
-    path("", include("users.urls", namespace="users")),
+    path("users/", include("users.urls", namespace="users")),
     path('accounts/signup/', views.SignUpView.as_view(), name='signup'),
     path('accounts/signup/driver/', views.DriverSignUpView.as_view(), name='driver_signup'),
     path('accounts/signup/customer/', views.PassengerSignUpView.as_view(), name='passenger_signup'),

@@ -2,6 +2,7 @@
 {% block content %}
 
 {% load crispy_forms_tags %} 
+<<<<<<< HEAD
 {% include "home/navbar_driver.html" %}
   <section class="pt-5 pb-5">
     <div class="container">
@@ -48,18 +49,233 @@
                               
                           <div class="modal-footer border-top-0 d-flex justify-content-center">
                             <button type="submit" class="btn btn-success">Submit</button>
+=======
+{% include "home/navbar.html" %}
+
+
+
+
+
+  <div class="jumbotron">
+    <div class="container">  
+      <div class="main">
+        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+          <strong>Hello {{user.username}}: </strong>Upload your bus info for passengers to see
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <h1>Get you connected</h1><h4></h4>
+       
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-lg-3">
+              <div class="panel panel-blue"></div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="panel panel-purple">
+                <a href="{% url 'users:buspage' %}" class="btn btn-success">View buses</a>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+               <div class="panel panel-blue">
+                <div class="model-form">
+                  <div class="container">
+                    <center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#form">
+                        Add your Bus
+                      </button>  </center>
+                    </div>
+                    
+                    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header border-bottom-0">
+                            <h5 class="modal-title" id="exampleModalLabel">Add a route</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+>>>>>>> a24cc2421f8f04b0cd092651fde388096a4ffb28
                           </div>
-                        </form>
+                                     <div class="modal-body">
+                                      <form method="POST" action="/driver"  enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                    {{form|crispy}}
+                                         
+                            <div class="modal-footer border-top-0 d-flex justify-content-center">
+                              <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                          </form>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                </div>
+                </ol>
+                </div>
+                </div>
+                </div>
+                </section>
+                
+               </div>     
             </div>
-          </ol>
+            <div class="col-sm-6 col-lg-3">
+               <div class="panel panel-purple"></div>     
+            </div>
+          </div>
         </div>
-      </div>
     </div>
+<<<<<<< HEAD
   </section>
 <div class="footer">
+=======
+  </div>
+
+
+
+</div></div></div>
+
+  <style>
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+	background-color: #333333;
+}
+
+.container {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.jumbotron {
+  height: 600px;
+  background: url('') fixed center center;
+  background-size: cover;
+  background-color: #b7b7a4;
+  background-attachment: scroll;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.nav {
+  margin: 0;
+  padding: 20px 0;
+}
+
+.nav li {
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  display: inline;
+  padding: 15px;
+}
+
+.main {
+  position: relative;
+  top: 180px;
+  text-align: center;
+  
+}
+
+.main h1 {
+  color: #333;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 70px;
+  margin-top: 0;
+  margin-bottom: 80px;
+  text-transform: uppercase;
+}
+
+.btn-main {
+  background-color: #333;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1.3px;
+  padding: 16px 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.supporting {
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+.supporting .col {
+  float: left;
+  width: 33%;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.supporting .col a {
+	color: #333;
+  text-decoration: none;
+  border: 2px solid #333;
+  display: inline-block;
+  width: 120px;
+  height: 22px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px #aaa;
+  
+}
+.supporting img {
+  height: 32px;
+}
+
+.supporting h2 {
+  font-weight: 600;
+  font-size: 23px;
+  text-transform: uppercase;
+}
+
+.supporting p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 50px;
+  margin-bottom: 40px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 30px 0;
+}
+
+.footer p {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+@media (max-width: 500px) {
+  .main h1 {
+    font-size: 50px;
+    padding: 0 40px;
+  }
+
+  .supporting .col {
+    width: 100%;
+  }
+}
+  </style>
+
+
+
+
+
+>>>>>>> a24cc2421f8f04b0cd092651fde388096a4ffb28
 {% include "home/footer.html" %}
 </div>
 {% include "home/chatbot.html" %}
