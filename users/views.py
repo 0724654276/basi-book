@@ -126,7 +126,7 @@ def deletebus(request, id):
     if request.method == "GET":
         print("got post")
         bus.delete()
-        return redirect("Basi:index")
+        return redirect("users:buspage")
     context = {
         "bus": bus
     }
@@ -143,7 +143,7 @@ def updatebus(request, pk):
         form = BusForm(request.POST, instance=bus)
         if form.is_valid():
             form.save()
-            return redirect('users:driverpage')
+            return redirect('users:buspage')
     context = {
         'form':form
     }
