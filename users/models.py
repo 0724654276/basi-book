@@ -28,6 +28,7 @@ class Driver(models.Model):
     def __str__(self):
         return self.user.username
 
+
 class Passenger(models.Model):
     """[Passenger model]
 
