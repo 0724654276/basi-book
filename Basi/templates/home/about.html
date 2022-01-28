@@ -3,8 +3,37 @@
 {% load sass_tags %}
 {% load static %}
 {% include "home/navbar.html" %}
-<h3>This is the about page</h3>
+<style>
+    input[type=text], input[type=email], textarea {
+ width: 100%;
+ padding: 12px 20px;
+ margin: 8px 0;
+ display: inline-block;
+}
 
-  
+</style>
+  <!--Email subscription Form -->
+  <form method="post" action="{% url 'Basi:about' %}">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label>Subscribe to get the latest Articles</label> <br>
+      <input type="email" name="email" placeholder="Enter Email to Subscribe">
+      <button class="btn btn-info" type="submit">Submit</button>
+    </div>
+
+  </form>
+
+  <!-- message if email is sent -->
+{% if messages %}
+  {% for message in messages %}
+    <div class="my-5 alert alert-success">
+      <h5 class="m-0">
+          {{ message }}
+      </h5>
+    </div>
+  {% endfor %}
+{% endif %}
+
 {% include "home/footer.html" %}
 {% endblock %}
