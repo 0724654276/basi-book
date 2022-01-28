@@ -18,10 +18,13 @@ from django.urls import path,include
 from users import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from mpesa.urls import mpesa_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("users.urls", namespace="users")),
+    path('mpesa/', include(mpesa_urls)),
+    #path("", include("mpesa_api", namespace="mpesa_api")),
+    path('api/v1/', include('mpesa_api.urls', namespace="mpesa_api")),
     path("", include("Basi.urls", namespace="Basi")),
     path("", include("profileApp.urls", namespace="profileApp")),
     path('accounts/', include('django.contrib.auth.urls')),

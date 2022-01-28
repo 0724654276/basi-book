@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'Basi',
+    "mpesa_api",
     'bootstrap4',
     'crispy_forms',
     'profileApp',
     'sass_processor',
     'blog',
     'bootstrap_datepicker_plus',
+    'mpesa',
 
 ]
 
@@ -76,6 +78,16 @@ TEMPLATES = [
         },
     },
 ]
+MPESA_CONFIG = {
+"CONSUMER_KEY": "J0cFvg7cqKhPOOfkKO9lWzQvfLl4XIMO",
+ "CONSUMER_SECRET": "MT3QpElLBt2iFZCQ",
+ "HOST_NAME": "http://localhost", 
+ "PASS_KEY": "@Babushka10",
+  "SAFARICOM_API": "https://sandbox.safaricom.co.ke",
+   "SHORT_CODE": "174379"
+
+}
+
 
 WSGI_APPLICATION = 'Bus.wsgi.application'
 
