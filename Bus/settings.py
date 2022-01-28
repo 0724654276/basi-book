@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,9 +50,23 @@ INSTALLED_APPS = [
     'blog',
     'bootstrap_datepicker_plus',
     'mpesa',
-
+    'anymail',
 ]
+#Anymail settings
 
+ANYMAIL = {
+
+   "MAILGUN_API_KEY": '[ Your Mailgun key ]',
+
+   "MAILGUN_SENDER_DOMAIN": '[ Your Mailgun Domain ]',
+
+}
+
+ 
+
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+
+DEFAULT_FROM_EMAIL = "[ Your default 'from' email address ]"
 CRISPY_TEMPLATE_PACK = 'uni_form'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -184,7 +201,13 @@ STATICFILES_FINDERS = [
 ]
 
 SASS_PROCESSOR_ROOT = STATIC_ROOT
-# MAILCHIMP CREDENTIALS
-MAILCHIMP_API_KEY = "f91f1cd5c2b35211d3a1fb774b75"
-MAILCHIMP_DATA_CENTER = "b75"
-MAILCHIMP_EMAIL_LIST_ID = "131eafcbca"
+CONTACT_EMAIL = 'contact@example.com'
+ADMIN_EMAILS = ['admin@example.com', ]
+
+
+# Twilio SendGrid
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')

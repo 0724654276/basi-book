@@ -12,28 +12,36 @@
 }
 
 </style>
-  <!--Email subscription Form -->
-  <form method="post" action="{% url 'Basi:about' %}">
+<form action="" method="post">
+    <input type="hidden" name="csrfmiddlewaretoken" value="yTF5g7ceTgkwsOimKxZpuV10DG4a1TWFwQ60pneu047lPvu6kTAlNYPfYEC9G8jq">
     {% csrf_token %}
+    <tr>
+        <th>
+            <label for="id_email">Email:</label>
+        </th>
+        <td>
+            <input type="email" name="email" maxlength="254" required id="id_email">
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="id_subject">Subject:</label>
+        </th>
+        <td>
+            <input type="text" name="subject" maxlength="255" required id="id_subject">
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="id_message">Message:</label>
+        </th>
+        <td>
+            <textarea name="message" cols="40" rows="10" required id="id_message"></textarea>
+        </td>
+    </tr>
+    <input type="submit" value="Submit">
+</form>
 
-    <div class="form-group">
-      <label>Subscribe to get the latest Articles</label> <br>
-      <input type="email" name="email" placeholder="Enter Email to Subscribe">
-      <button class="btn btn-info" type="submit">Submit</button>
-    </div>
-
-  </form>
-
-  <!-- message if email is sent -->
-{% if messages %}
-  {% for message in messages %}
-    <div class="my-5 alert alert-success">
-      <h5 class="m-0">
-          {{ message }}
-      </h5>
-    </div>
-  {% endfor %}
-{% endif %}
-
+  
 {% include "home/footer.html" %}
 {% endblock %}
