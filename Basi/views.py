@@ -26,3 +26,4 @@ def findbus(request):
             return render(request, 'findbus.html', context)
     else:
         return render(request, 'findbus.html')        
+        
