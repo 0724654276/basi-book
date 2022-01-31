@@ -1,15 +1,17 @@
 from django.db import models
-
+from django.utils import timezone
+from django.contrib.auth.models import User 
 # Create your models here.
-class Bus(models.Model):
-    sacco_name = models.CharField(max_length=30)
-    terminus = models.CharField(max_length=30)
-    route = models.CharField(max_length=30)
-    nos = models.DecimalField(decimal_places=0, max_digits=2)
-    rem = models.DecimalField(decimal_places=0, max_digits=2)
-    fare_price = models.DecimalField(decimal_places=2, max_digits=6)
-    date = models.DateField()
-    time = models.TimeField()
+class ContactUs(models.Model):
+    """[contact model]
+
+    Args:
+        models ([class]): [create contact form]
+
+    """
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
 
     def __str__(self):
-        return self.sacco_name
+        return self.email
