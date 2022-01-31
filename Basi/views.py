@@ -1,21 +1,13 @@
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import TemplateView
-<<<<<<< HEAD
-from .forms import ContactForm
-=======
-from .models import Busi
 from django.views.generic import DeleteView
-from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView
-from .models import Ticket
->>>>>>> b29a8d1527d2be5f9cbc2c9582ddcf85ea2447e3
+from .models import Busi,Ticket
 # Create your views here.
 
 def home(request):
-    
     """[home view]
 
     Args:
