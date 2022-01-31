@@ -33,6 +33,10 @@ def index(request):
 
 def about(request):
     return render(request, "about.html")
+
+
+def routes(request):
+    return render(request, "routes.html")
 class BusiDeleteView(DeleteView):
     model = Busi
     template_name = 'delete.html'

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load crispy_forms_tags %} 
-{% include "home/navbar.html" %}
+{% include "navbar.html" %}
 <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
     <strong>Hello {{user.username}}: </strong>Scroll to view available buses
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -78,8 +78,8 @@
       
 
 <div class="footer">
-    {% include "home/footer.html" %}
+    {% include "footer.html" %}
     </div>
-    {% include "home/chatbot.html" %}
+    {% include "chatbot.html" %}
     
 {% endblock %}
