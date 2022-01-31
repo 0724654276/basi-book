@@ -100,3 +100,7 @@ def passenger(request):
     }
     return render(request, "passengers/passenger.html", context)
 
+
+def bookingRide(request):
+    return render(request, 'passenger/bookingRide.html')
+

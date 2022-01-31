@@ -70,7 +70,7 @@ class BusModel(models.Model):
         return str(self.user)
 
 
-<<<<<<< HEAD
+
 
 class BookingModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -78,11 +78,11 @@ class BookingModel(models.Model):
     # time = models.
     no_of_seats = models.IntegerField(default=0)
     route = models.CharField(max_length=200) 
+    date_booked = models.DateTimeField(default=timezone.now)
+
 
 
     def __str__(self):
         return str(self.user)
 
-=======
->>>>>>> development
     

@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.forms.utils import ValidationError
 from django.forms import TextInput
-from .models import User,Driver,Passenger,BusModel
+from .models import BookingModel, User,Driver,Passenger,BusModel
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
@@ -57,4 +57,11 @@ class BusForm(forms.ModelForm):
     class Meta:
         model = BusModel
         fields = "__all__"
+
+
+class BookingForm(forms.Model):
+    class Meta:
+        model = BookingModel
+        fields = '__all__'
+        exclude = ['date_booked', 'user', 'bus']
 
