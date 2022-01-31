@@ -1,72 +1,102 @@
 
- {%load static%}
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> 
-            <link href="{% static 'css/book.css' %}" rel="stylesheet"> 
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+   <link href="{% static 'css/book.css' %}" rel="stylesheet">
 
-          <title>Document</title>
-      </head>
-      <body>
-          <div class="container "style="color: purple;">
+  <script src="js/scripts.js"></script>
 
-         
-           <form>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="inputEmail4">First Name</label>
-        <input type="name" class="form-control" id="" placeholder="First Name">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputPassword4">Last Name</label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Last Name">
-      </div>
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputAddress">ID Number</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="ID NO">
-    </div>
-
-    
-    <div class="form-group col-md-4">
-        <label for="exampleFormControlSelect1">select route</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-         
-            <option>select route</option>
-          <option>Nairobi-Eldoret</option>
-          <option>Eldoret-Kisumu</option>
-          <option>Mombasa-Nairobi</option>
-          <option>Eldoret-nairobi</option>
-          <option>Kisumu-Eldoret</option>
-        </select>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="exampleFormControlSelect1">number of seats</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>1</option>
-        </select>
-      </div>
-     <div class="form-group col-md-4">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          confirm booking
-        </label>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">book</button>
-  </form>
+</head>
+<body>
+  <div class="container"> 
+    <div class="row"> 
+      <div class="col-md-6"> 
+  <p><h4><strong>Select Your Route:-</strong></h4></p>
+      <select id="route"  name="route">
+         <option>Select route</option>
+         <option value="mombasa">mombasa-Nairobi</option>
+         <option value="nairobi">Nairobi-Kisumu</option>
+         <option value="kisumu">Kisumu-Eldoret</option>
+      
+      </select>
+      <br>
+      <p><h4><strong>Choose Your seat Category:-</strong></h4></p>
+     <select id="category" name="category">
+         <option>Select category</option>
+         <option value="first">First class</option>
+         <option value="second">Second class</option>
+         <option value="economy">Economy class</option>
+     </select>
+     
+     
 
 
 
-        
-        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+     
 
-    </div>
-      </body>
-      </html>
+     <h4><strong>Enter Number Of seats</strong></h4>
+     <input type="number" id="seat_no" name="seat_no" value="1" placeholder="Number of seats" required>
+
+
+</div>
+
+ 
+
+
+<div class="col-md-6">
+<div id="summary">
+<h4><strong>Your booking summary</strong></h4>
+<table class="table">
+ <thead>
+     <tr>
+         <th>route</th>
+         <th>category</th>
+         <th>number of seats</th>
+         <th>Totals.</th>
+     </tr>
+ </thead>
+ <tbody>
+     <tr class="table-primary">
+         <td id="routename"></td>
+         <td id="categoryPrice"></td>
+         <td id="number"></td> 
+         <td id="urtotals"></td> 
+     </tr>
+     <tr> 
+     <div id="msg">
+         <p>Here is your total bill...</p>
+         <p>Thankyou for choosing bus chap,,enjoy your ride</p> 
+     </div>
+                 
+     </tr>
+
+ </tbody>
+ 
+</table>
+
+</div>
+</div>
+
+</div>
+<br>
+<div class="row">
+  <div class=""> 
+<button id="btn-submit" type="submit" class="btn btn-primary col-md-1">CheckOut</button>
+</div>
+</div>
+</div>
+</div>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+</div>
+</body>
+</html>
+
+      
    
