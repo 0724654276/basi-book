@@ -51,22 +51,11 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'mpesa',
     'anymail',
-]
-#Anymail settings
-
-ANYMAIL = {
-
-   "MAILGUN_API_KEY": '[ Your Mailgun key ]',
-
-   "MAILGUN_SENDER_DOMAIN": '[ Your Mailgun Domain ]',
-
-}
-
  
+]
+DEFAULT_FROM_EMAIL = 'mugambi645@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
-
-DEFAULT_FROM_EMAIL = "[ Your default 'from' email address ]"
 CRISPY_TEMPLATE_PACK = 'uni_form'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
