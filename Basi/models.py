@@ -24,3 +24,16 @@ class Ticket(models.Model):
     #seat_id = models.ForeignKey(Seats, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     id_no = models.IntegerField(default=1)
+class ContactUs(models.Model):
+    """[contact model]
+
+    Args:
+        models ([class]): [create contact form]
+
+    """
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.email

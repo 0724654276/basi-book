@@ -58,6 +58,7 @@ class Route(models.Model):
 
     def __str__(self):
         return self.destination + " " + self.pickup_point
+
 class Bus(models.Model):
     """[BookModel]
 
@@ -88,7 +89,6 @@ class Bus(models.Model):
     num_plate = models.CharField(max_length=100,blank=True)
     phone_num = models.CharField(max_length=100,blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
-  
     
     def __str__(self):
         return str(self.user)
@@ -101,3 +101,25 @@ class Bus(models.Model):
     def update_bus(self, hood_name):
         self.hood_name = hood_name
         self.save()
+
+
+SEATS_CHOICES = (
+    ("vip", "VIP"),
+    ("economy", "ECONOMY"),
+    ("bussiness", "BUSSINESS")
+)
+class Booking(models.Model):
+    """[summary]
+
+    Args:
+        models ([type]): [description]
+    """
+    route = models.ForeignKey(Route, on_delete=models.CASCADE)
+    departure_date = models.CharField(max_length=100,blank=True)
+    seat = models.CharField(max_length=100, choices=SEATS_CHOICES,default="economy")
+    phone_num = models.CharField(max_length=100,blank=True)
+    email = models.CharField(max_length=100,blank=True)
+    bus = models.ForeignKey(Bus, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, blank=True)
+    def __str__(self):
+        return self.seat + " " + self.name

@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block content %}
+{% load sass_tags %}
+{% load static %}
+{% include "navbar.html" %}
+<div class="we-are-block">
+    
+    <div id="about-us-section">
+        
+        <div class="about-us-image">
+            
+            <img src="https://www.modern.co.ke/img/banner-bus-2.c49670dd.png" width="808" height="458" alt="Lobby Image">
+            
+        </div>
+        
+        <div class="about-us-info">
+            
+            <h2>We are Basi Book</h2>
+            
+            <p>
+                Basi Book is a traveling solution that helps the hundreds of people travel in and out of Nairobi. The app shows the available busses for travel and the spesific time the bus will be moving. This helps avoid the inconvinience especially in the high peak seasons where busses might be unavailable.Basi book also helps bus companies to keep records and maintain of information in general.
+                This web app  will deal with maintenance of records of details of each passenger who has reserved a seat for a journey. It also includes maintenance of information like schedule and details of each bus. It will be helpful for bus operators, who want to operate many bus trips in a day. It will be focused on customers, drivers and an administrator who oversees the whole process.            </p>
+            </div>
+            <!-- <a class="btn btn-primary" id="button" href="{% url 'Basi:index' %}" style="background-color: orange; border-color: orange; margin-top:550px ;" role="button"><span>Exit</span></a> -->
+        </div>
+    </div>
+</div>  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form action="" method="post">
+    <input type="hidden" name="csrfmiddlewaretoken" value="yTF5g7ceTgkwsOimKxZpuV10DG4a1TWFwQ60pneu047lPvu6kTAlNYPfYEC9G8jq">
+    {% csrf_token %}
+    <tr>
+        <th>
+            <label for="id_email">Email:</label>
+        </th>
+        <td>
+            <input type="email" name="email" maxlength="254" required id="id_email">
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="id_subject">Subject:</label>
+        </th>
+        <td>
+            <input type="text" name="subject" maxlength="255" required id="id_subject">
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="id_message">Message:</label>
+        </th>
+        <td>
+            <textarea name="message" cols="40" rows="2" required id="id_message"></textarea>
+        </td>
+    </tr>
+    <input type="submit" value="Submit">
+    {% include "footer.html" %}
+</form>
+</div>
+  <style>
+      
+
+
+body,
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  font-family: "Oswald", sans-serif;
+  font-size: 12pt;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bebas Neue", cursive;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+
+a:hover {
+  transition: all 0.5s ease-in-out;
+}
+
+.we-are-block {
+  height: 500px;
+}
+#about-us-section {
+  background: #0c4c91;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.about-us-image {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  height: 600px;
+  overflow: hidden;
+}
+.about-us-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  width: 40%;
+  margin-right: 850px;
+  margin-left: 12px;
+}
+.about-us-info h2 {
+  color: white;
+  font-size: 40pt;
+  text-align: right;
+}
+.about-us-info p {
+  color: white;
+  font-size: 14pt;
+  text-align: right;
+}
+</style>
+{% endblock %}
+
+</style>
+
+  
+{% include "footer.html" %}

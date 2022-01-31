@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for order in orders %}
+{% for bus in buses %}
+
+<div class="card" style="width: 18rem; margin-top: 6rem; margin-left: 4rem;" >
+   <p>Vip seats:{{bus.vip_seats}}</p>
+   <p>Bussiness:{{bus.bussiness_seats}}</p>
+   <p>Economy:{{bus.economy_seats}}</p>
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item">passenger: {{order.name}}</li>
+      <li class="list-group-item">Route: {{order.route}}</li>
+      <li class="list-group-item">Seat: {{order.seat}}</li>
+      <li class="list-group-item">Leaving: {{order.departure_date}}</li>
+    </ul>
+  </div>
+  {% endfor %}
+{% endfor %}
+{% endblock %}

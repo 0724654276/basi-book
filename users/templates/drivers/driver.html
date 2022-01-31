@@ -4,77 +4,310 @@
 {% load crispy_forms_tags %} 
 {% include "navbar.html" %}
 
-
-
-
-
-  <div class="jumbotron">
-    <div class="container">  
-      <div class="main">
-        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-          <strong>Hello {{user.username}}: </strong>Upload your bus info for passengers to see
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+<!-- Background video -->
+<div class="video-background-holder">
+  <div class="video-background-overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="https://huykhong.com/codepen/landing.video.mp4" type="video/mp4">
+    </video><!-- end video source-->
+    <div class="video-background-content container h-100">
+      <div class="d-flex h-100 text-center align-items-center">
+        <div class="w-100 text-white">
+          <h1 class="display-4">Welcome driver {{user.username}}!</h1>
+            <p class="lead mb-0">BasiChap is a platform where you can post your bus and get customers.<br>Get to operate in the busiest routes in the country with us.<br>Post your bus info to get started.<br><p class="small text-active">Fast,simple and free!</p>
+            <p class="lead mb-0"></p>
+            <p class="lead mb-0"></p>
+           
+            <p class="lead">
+              <a href="#" class="btn btn-primary">Read More</a>            
+            </p>
         </div>
-        <h1>Get you connected</h1><h4></h4>
-       
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 col-lg-3">
-              <div class="panel panel-blue"></div>
+      </div><!-- end text/button area -->
+    </div>
+  </div><!-- end video-background-overlay-->
+</div>  
+<style>
+  .video-background-holder {
+  position: relative;
+  background-color: black;
+  height: calc(100vh - 72px);
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video-background-holder video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.video-background-content {
+  position: relative;
+  z-index: 2;
+}
+
+.video-background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+</style>
+
+
+
+<div class="container" style="margin-top: 3rem; ">
+  <div class="row">We connect drivers and passengers <br>in major towns.<br>
+      <div class="col" style="column-count: 1">
+          <ul class="text-center">
+              <a class="btn btn-secondary" href="#" role="button">Nairobi</a>
+              <a class="btn btn-secondary" href="#" role="button">Mombasa</a>
+              <a class="btn btn-secondary" href="#" role="button">Nakuru</a>
+              <a class="btn btn-secondary" href="#" role="button">Kisumu</a>
+              <a class="btn btn-secondary" href="#" role="button">Meru</a>
+              <a class="btn btn-secondary" href="#" role="button">Machakos</a>   
+          </ul>
+          </div>
+      </div>
+  </div>
+  <hr style="font-size: 5px;">
+  
+
+
+<div class="add-bus justify-content-center" style="margin: 3rem; margin-bottom: 4rem;">
+  <div class="model-form">
+    <div class="container">
+      <center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#form">
+          Add your Bus
+        </button>  </center>
+      </div>
+      
+      <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <h5 class="modal-title" id="exampleModalLabel">Add a route</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="col-sm-6 col-lg-3">
-              <div class="panel panel-purple">
-                <a href="{% url 'users:buspage' %}" class="btn btn-success">View buses</a>
+                       <div class="modal-body">
+                        <form method="POST" action="/driver"  enctype="multipart/form-data">
+                          {% csrf_token %}
+                      {{form|crispy}}
+                           
+              <div class="modal-footer border-top-0 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success">Submit</button>
               </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-               <div class="panel panel-blue">
-                <div class="model-form">
-                  <div class="container">
-                    <center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#form">
-                        Add your Bus
-                      </button>  </center>
-                    </div>
-                    
-                    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header border-bottom-0">
-                            <h5 class="modal-title" id="exampleModalLabel">Add a route</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                                     <div class="modal-body">
-                                      <form method="POST" action="/driver"  enctype="multipart/form-data">
-                                        {% csrf_token %}
-                                    {{form|crispy}}
-                                         
-                            <div class="modal-footer border-top-0 d-flex justify-content-center">
-                              <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                </ol>
-                </div>
-                </div>
-                </div>
-                </section>
-                
-               </div>     
-            </div>
-            <div class="col-sm-6 col-lg-3">
-               <div class="panel panel-purple"></div>     
-            </div>
+            </form>
           </div>
         </div>
-    </div>
+      </div>
   </div>
+  </ol>
+
+</div>
+<br>
+<hr>
+<div class="center">
+  <div class="btn-1">
+  
+    <a href="{% url 'users:buspage' %}"><span>View buses</span></a>
+  </div>
+  <!-- Created by   http://grohit.com/   -->
+</div>
+
+<style>
+
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 24px;
+}
+
+.btn-1,
+.btn-2 {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* Created by http://grohit.com/  */
+
+.btn-1 a,
+.btn-2 a {
+  text-decoration: none;
+  border: 2px solid #010100;
+  padding: 15px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+span {
+  position: relative;
+  /* z-index coz when we put bg to before and after this span text will not be visible */
+  z-index: 3;
+}
+
+/* Button 1 styles */
+
+.btn-1 a::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -2px;
+  width: calc(100% + 6px);
+  /*100% plus double the times left values*/
+  height: calc(100% - 10px);
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  transform: scaleY(1);
+}
+
+.btn-1 a:hover::before,
+.btn-2 a:hover::before {
+  transform: scaleY(0);
+}
+
+.btn-1 a::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: -5px;
+  width: calc(100% - 10px);
+  /*100% plus double the times left values*/
+  height: calc(100% + 10px);
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  transform: scaleX(1);
+}
+/* Created by http://grohit.com/  */
+
+.btn-1 a:hover::after,
+.btn-2 a:hover::after {
+  transform: scaleX(0);
+}
+
+/* Button 2 styles */
+
+.btn-2 a {
+  color: #ffffff;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-2 a:hover {
+  color: #000000;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-2 a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transition: all 0.5s ease-in-out;
+  transform: scaleY(1);
+}
+
+.btn-2 a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transition: all 0.5s ease-in-out;
+  transform: scaleX(1);
+}
+
+
+</style>
+
+     
+            
+<br><hr>
+   
+  <style>
+    .card-content{
+    padding: 1px 20px 20px;
+    text-align: left;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3); 
+}
+
+.card-icon img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 66%;
+    height: 66%;
+    padding: 20px;
+}
+
+.card-icon {
+    width: 100%;
+    height: 100%;
+	  background-color: #00b6f5;
+}
+
+.card-icon:hover {
+	  background-color: #2a6496;
+}
+
+.card-content h3 {
+    font-size: 22px;
+    color: #333;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.card-content h4 {
+	  font-size: 16px;
+	  color: #333;
+    font-weight: 600;
+	  line-height: 0.9;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 7px;
+}
+
+.card-content h5 {
+	  color: #333;
+	  line-height: 0.9;
+    font-family: 'Open Sans', sans-serif;
+}
+  </style>
+
+
+
+
+
+
+
 
 
 

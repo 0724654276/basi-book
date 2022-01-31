@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('bus_name', models.CharField(max_length=25)),
                 ('image', models.ImageField(default='bus.jpg', upload_to='bus_pics')),
-            ],
-        ),
+                        ],
+                ),
     ]
