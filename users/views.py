@@ -1,5 +1,9 @@
 from django.shortcuts import render
-
+from django.db.models import Q 
+from .models import User
+from django.conf import settings
+from django.http import HttpResponse
+from django.core.paginator import Paginator
 # Create your views here.
 from django.contrib import messages
 from django.contrib.auth import login
@@ -10,9 +14,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
-from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm
-from .models import  Driver, User,Passenger,BusModel,BusModel
+from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm,BookingForm
+from .models import  Driver, User,Passenger,Bus,Booking
 from django.views.generic import TemplateView
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class SignUpView(TemplateView):
     template_name = 'registration/signup.html'
@@ -50,14 +56,17 @@ def driver(request):
         [template]: [render a template[driver]]
     """
     current_user = request.user
-
-    user_profile = BusModel.objects.all()
+    user_profile = Bus.objects.all()
     if request.method == 'POST':
+        print("Hello")
         form = BusForm(request.POST,request.FILES)
-        if form.is_valid:
+        if form.is_valid():
+            print("Is valid")
             new_bus = form.save(commit = False)
             #new_proj.user = user_profile
             new_bus.save()
+           
+            print(new_bus.__dict__)
         return redirect('users:driver')  
     else:
         form = BusForm()
@@ -86,8 +95,8 @@ class PassengerSignUpView(CreateView):
         return redirect('users:passenger')
 
 
-def passenger(request):
-    """[passenger main view]
+def bookForm(request):
+    """[passengerbookform main view]
 
     Args:
         request ([function]): [main passenger view]
@@ -95,12 +104,127 @@ def passenger(request):
     Returns:
         [template]: [render customer page]
     """
+    current_user = request.user
+    busData = Bus.objects.all()
+    buses = Booking.objects.all()
+    if request.method == 'POST':
+        print("Hello")
+        form = BookingForm(request.POST,request.FILES)
+        if form.is_valid():
+            print("Is valid")
+            new_order = form.save(commit = False)
+            #new_proj.user = user_profile
+            new_order.save()
+            
+            print(new_order.__dict__)
+        return redirect('users:bookinfo')  
+    else:
+        form = BookingForm()
+
+    return render(request,'passengers/bookform.html',{'form':form, "buses":buses, "busData":busData})    
+def passenger(request):
+    bus = Bus.objects.all()
+    return render(request, "passengers/passenger.html", {"bus": bus})
+def buspage(request):
     context = {
-        "bus": BusModel.objects.all()
+        "bus":Bus.objects.all()
     }
-    return render(request, "passengers/passenger.html", context)
+    return render(request, "drivers/businfo.html",context)
+
+@login_required(login_url='login')
+def deletebus(request, id):
+    """bus = Bus.objects.get(id=pk)
+
+    if request.user != bus.user:
+        return HttpResponse('You are not allowed')
+
+    if request.method == 'POST':
+        bus.delete()
+        return redirect('Basi:index')
+        """
+    bus = Bus.objects.get(id=id)
+    print("got id")
+    if request.method == "GET":
+        print("got post")
+        bus.delete()
+        return redirect("users:buspage")
+    context = {
+        "bus": bus
+    }
+    return render(request, 'drivers/driver.html', context)
+@login_required(login_url='login')
+def updatebus(request, pk):
+    bus = Bus.objects.get(id=pk)
+    form = BusForm(instance=bus)
+
+    if request.user != bus.user:
+        return HttpResponse('You are not allowed')
+
+    if request.method == 'POST':
+        form = BusForm(request.POST, instance=bus)
+        if form.is_valid():
+            form.save()
+            return redirect('users:buspage')
+    context = {
+        'form':form
+    }
+    return render(request, 'drivers/bus_form.html', context)
+
 
 
 def bookingRide(request):
     return render(request, 'passenger/bookingRide.html')
 
+def bookinfo(request):
+    current_user = request.user
+    context = {
+        "orders": Booking.objects.all(),
+        "buses": Bus.objects.all()
+    }
+    return render(request, "passengers/bookinfo.html", context)
+
+
+
+
+
+
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+
+
+
+def password_reset_request(request):
+	if request.method == "POST":
+		password_reset_form = PasswordResetForm(request.POST)
+		if password_reset_form.is_valid():
+			data = password_reset_form.cleaned_data['email']
+			associated_users = get_user_model().objects.filter(Q(email=data))
+			if associated_users.exists():
+				for user in associated_users:
+					subject = "Password Reset Requested"
+					email_template_name = "registration/password/password_reset_email.txt"
+					c = {
+					"email":user.email,
+					'domain':'127.0.0.1:8000',
+					'site_name': 'Website',
+					"uid": urlsafe_base64_encode(force_bytes(user.pk)),
+					"user": user,
+					'token': default_token_generator.make_token(user),
+					'protocol': 'http',
+					}
+					email = render_to_string(email_template_name, c)
+					try:
+						send_mail(subject, email, 'admin@example.com' , [user.email], fail_silently=False)
+					except BadHeaderError:
+						return HttpResponse('Invalid header found.')
+					return redirect ("/password_reset/done/")
+	password_reset_form = PasswordResetForm()
+	return render(request=request, template_name="registration/password//password_reset.html", context={"password_reset_form":password_reset_form})
