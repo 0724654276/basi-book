@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from django.contrib.auth import views as auth_views #import this
+
 from django.contrib import admin
 from django.urls import path,include
 from django.contrib.auth import views as auth_views
@@ -25,6 +27,11 @@ from django.conf.urls.static import static
 from mpesa.urls import mpesa_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include('users.urls')),
+    path("", include("users.urls", namespace="users")),
+    path('mpesa/', include(mpesa_urls)),
+    #path("", include("mpesa_api", namespace="mpesa_api")),
+    path('api/v1/', include('mpesa_api.urls', namespace="mpesa_api")),
     path("", include("Basi.urls", namespace="Basi")),
     path("profile/", include("profileApp.urls", namespace="profileApp")),
     path('accounts/', include('django.contrib.auth.urls')),

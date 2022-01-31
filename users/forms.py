@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.forms.utils import ValidationError
 from django.forms import TextInput
-from .models import User,Driver,Passenger,Bus,Booking
+from .models import User,Driver,Passenger,Bus,Route,Booking
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 from django.views import generic
 from crispy_forms.helper import FormHelper
@@ -70,6 +70,11 @@ class BusUpdateForm(forms.ModelForm):
     model = Bus
     fields = "__all__"
 
+class RouteForm(forms.ModelForm):
+    class Meta:
+        model = Route
+        fields =  "__all__"   
+        
 
 class BookingForm(forms.ModelForm):
     class Meta:

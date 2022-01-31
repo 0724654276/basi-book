@@ -1,10 +1,13 @@
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
+from django.views.generic import TemplateView
+from .models import Busi
 from django.views.generic import DeleteView
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView
-from .models import Busi,Ticket
+from .models import Ticket
+from .forms import ContactForm
 # Create your views here.
 
 def home(request):
@@ -27,6 +30,12 @@ def index(request):
     
     return render(request, "index.html")
 
+def about(request):
+    return render(request, "about.html")
+
+
+def routes(request):
+    return render(request, "routes.html")
 class BusiDeleteView(DeleteView):
     model = Busi
     template_name = 'delete.html'
@@ -60,3 +69,16 @@ class TicketView():
         return super().form_valid(form)
 def book(request):
     return render(request,"book.html")
+    return render(request, "home/index.html")
+def about(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email_subject = f'New contact {form.cleaned_data["email"]}: {form.cleaned_data["subject"]}'
+            email_message = form.cleaned_data['message']
+            send_mail(email_subject, email_message, settings.CONTACT_EMAIL, settings.ADMIN_EMAIL)
+            return render(request, 'home/contact/success.html')
+    form = ContactForm()
+    context = {'form': form}
+    return render(request, 'home/about.html', context)
