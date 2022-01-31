@@ -62,7 +62,7 @@ $().ready(function(){
                             route_price = 750;
                         }
                         else {
-                            pizza_price = 1000;
+                            route_price = 1000;
                         }
                         
                         break; 
