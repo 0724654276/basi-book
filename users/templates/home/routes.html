@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<html>
+<body>
+    <div class="header">
+        <h1>Add a new route</h1>
+    </div>
+          <div class="container">
+            
+              <h2>
+                  Add new Route
+                  <center>
+                      <a class="btn btn-primary" id="button" href="#" style="background-color: orange; border-color: orange;" role="button"><span>Add a Route</span></a>
+                    </center>
+                </h2>
+                <h2>
+                    Here is the list of routes....
+                </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+  <style>
+body {
+	font-family: 'Raleway', sans-serif;
+	background-color: #051525;
+    color:aliceblue
+}
+</style>
+<!--chat bot-->
+{% include "home/chatbot.html" %}
+<div class="footer" style="margin-top:300px">
+    {% include "home/footer.html" %}
+</div>
+</body>
+</html>
+{% endblock %}
