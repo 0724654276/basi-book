@@ -25,8 +25,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("users.urls", namespace="users")),
     path('mpesa/', include(mpesa_urls)),
+    path('paypal/', include('paypal.standard.ipn.urls')),
     #path("", include("mpesa_api", namespace="mpesa_api")),
-    path('api/v1/', include('mpesa_api.urls', namespace="mpesa_api")),
+    path('', include('mpesa_api.urls', namespace="mpesa_api")),
     path("", include("Basi.urls", namespace="Basi")),
     path("", include("profileApp.urls", namespace="profileApp")),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -36,7 +37,8 @@ urlpatterns = [
     path("", include("blog.urls", namespace="blog")),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='main/password/password_reset_done.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="main/password/password_reset_confirm.html"), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='main/password/password_reset_complete.html'), name='password_reset_complete'),  
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='main/password/password_reset_complete.html'), name='password_reset_complete'),
+    path('reviews/', include('reviews.urls')),  
 ]
 if settings.DEBUG:
     urlpatterns += static(

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-94zpt5tis7u5twqn+*04=342prgojcd!43w^q5=xl&)h@o)7^k'
-ALLOWED_HOSTS = ['5d810221920834.ngrok.io', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['d6ad-102-219-208-34.ngrok.io', '127.0.0.1', 'localhost']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'mpesa',
     'anymail',
- 
+    'paypal.standard.ipn',
+
 ]
 DEFAULT_FROM_EMAIL = 'mugambi645@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -209,3 +210,7 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
 }
+
+PAYPAL_RECEIVER_EMAIL = 'sb-ar1gj12685758@business.example.com'
+
+PAYPAL_TEST = True
