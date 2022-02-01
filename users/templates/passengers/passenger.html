@@ -9,22 +9,23 @@
     </button>
 
   </div>
-  <a class="nav-link" href="{% url 'logout' %}">Logout</i></a>
-<div class="search" style="padding: 150px; background-color: wheat;">
+
     <center>
+      <div class="tab-content col-md-12" style="	width:600px;
+        margin:10px;
+        background-color: #E0D8D6;
+      ">
         <h3>List of Routes</h3>
         {% for route in routes %}
-        <a class="btn btn-primary" href="selectedroute/{{route.id}}" role="button">From {{route.pickup_point}} to {{route.destination}}                    
+        <a class="btn btn-primary" href="selectedroute/{{route.id}}" role="button">From {{route.pickup_point}} to {{route.destination}}</a>
+        <br>
+        <br>
+        <br>
         {% endfor %}
-        </a>
-       
+      </div>
 
     </center>
-</div>
-<div class="apply" style="padding: 250px; background-color:#212529;">
-<center><h3 style="color: white;">Passenger order area ie form and other things {{message}}</h3></center></div>
-<div class="text-center">
-    
+   
 </div>
 <div class="container-fluid mt-5">
     <div class="px-lg-5">
@@ -74,11 +75,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
-              {% for route in routes %}
-              this is your {{route.destination}}
-              {% endfor %}
-          </div>
+      
         </div>
         {%endfor%}
         <!-- End -->
@@ -87,10 +84,6 @@
   </div>
   <div class="fare-chart" style="padding: 300px; background-color: #212529;">
 <center><h3 style="color: white;">Fare chat and other FAQS</h3></center></div>
-
-            <!-- End -->
-     
-      
 
 <div class="footer">
     {% include "footer.html" %}

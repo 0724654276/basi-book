@@ -1,16 +1,17 @@
 
  {%load static%}
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> 
-            <link href="{% static 'css/book.css' %}" rel="stylesheet"> 
-
-          <title>Document</title>
-      </head>
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> 
+     <link href="{% static 'css/book.css' %}" rel="stylesheet"> 
+     
+     <title>Book Bus</title>
+    </head>
+    <center>
       <body>
           <div class="container "style="color: purple;">
 
@@ -18,49 +19,35 @@
            <form>
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="inputEmail4">First Name</label>
+        <label for="inputEmail1">First Name</label>
         <input type="name" class="form-control" id="" placeholder="First Name">
       </div>
       <div class="form-group col-md-4">
-        <label for="inputPassword4">Last Name</label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Last Name">
+        <label for="input">Last Name</label>
+        <input type="name" class="form-control" id="inputPassword4" placeholder="Last Name">
       </div>
     </div>
+
     <div class="form-group col-md-4">
       <label for="inputAddress">ID Number</label>
       <input type="text" class="form-control" id="inputAddress" placeholder="ID NO">
     </div>
 
     
-    <div class="form-group col-md-4">
-        <label for="exampleFormControlSelect1">select route</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-         
-            <option>select route</option>
-          <option>Nairobi-Eldoret</option>
-          <option>Eldoret-Kisumu</option>
-          <option>Mombasa-Nairobi</option>
-          <option>Eldoret-nairobi</option>
-          <option>Kisumu-Eldoret</option>
-        </select>
-      </div>
       <div class="form-group col-md-4">
         <label for="exampleFormControlSelect1">number of seats</label>
         <select class="form-control" id="exampleFormControlSelect1">
           <option>1</option>
         </select>
       </div>
-     <div class="form-group col-md-4">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          confirm booking
-        </label>
+   
       </div>
     </div>
     <button type="submit" class="btn btn-primary">book</button>
   </form>
 
+
+</center>
 
 
         
