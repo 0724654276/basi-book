@@ -15,6 +15,5 @@ urlpatterns = [
     path("bookinfo", views.bookinfo, name="bookinfo"),
     path("password_reset", views.password_reset_request, name="password_reset"),
     path("bookform", views.bookForm, name="bookform"),
-   
-    
+    path('bookinfo',views.details,name ='details'),   
 ]

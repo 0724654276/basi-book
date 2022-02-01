@@ -14,7 +14,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm,BookingForm
-from .models import  Driver, User,Passenger,Bus,Booking,Route
+from .models import  SEATS_CHOICES, Driver, User,Passenger,Bus,Booking,Route
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -233,4 +233,17 @@ def password_reset_request(request):
 	password_reset_form = PasswordResetForm()
 	return render(request=request, template_name="registration/password//password_reset.html", context={"password_reset_form":password_reset_form})
 
+
+
+
+def details(request):
+    user = request.POST.get("user")
+    rt = request.Post.get("route_id")
+    sc = request.POST.get("schedule")
+    pn = request.POST.get("phone_num")
+    sc = request.POST.getlist("SEATS_CHOICES")
+
+
+    o_ref = Bus(user = user,route_id = rt,schedule = sc,phone_num = pn,SEATS_CHOICES = sc)
+    o_ref.save()
 
