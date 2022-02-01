@@ -2,11 +2,13 @@
 {% block content %}
 {% load crispy_forms_tags %} 
 {% include "navbar.html" %}
+
 <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
     <strong>Hello {{user.username}}: </strong>Scroll to view available buses
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
+    
 
   </div></a>
   
@@ -16,9 +18,10 @@
       <form action="" method="post">
 {% csrf_token %}
         <input type="text"  class="search-input" placeholder="Search by route" />
-        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+        <button class="search-icon" onclick="sear-1chToggle(this, event);"><span></span></button>
 </div>
     <span class="close" onclick="searchToggle(this, event);"></span>
+    
 </div>
 </form>
 </div>
@@ -27,6 +30,7 @@
 <ul>
 <a href="{% url 'users:bookform' %}">Continue to booking</a>
 </ul>
+
 <style>
 body {
   background-color: #d1be9c !important;

@@ -77,7 +77,7 @@ class Bus(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     #destination = models.CharField(max_length=100, blank=True)
     #pickup_point = models.CharField(max_length=100, blank=True)
-    route_id = models.ForeignKey(Route, on_delete=models.CASCADE,default=1)
+    route= models.ForeignKey(Route, on_delete=models.CASCADE,default=1)
     schedule = models.CharField(max_length=100,blank=True)
     #seats = models.CharField(max_length=9,choices = Seats.choices,default=Seats.business)
     vip_seats = models.IntegerField(null=True,blank=True)
@@ -89,6 +89,7 @@ class Bus(models.Model):
     num_plate = models.CharField(max_length=100,blank=True)
     phone_num = models.CharField(max_length=100,blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
+    
     
     def __str__(self):
         return str(self.user)
@@ -108,6 +109,7 @@ SEATS_CHOICES = (
     ("economy", "ECONOMY"),
     ("bussiness", "BUSSINESS")
 )
+
 class Booking(models.Model):
     """[summary]
 

@@ -14,6 +14,7 @@ urlpatterns = [
     path("bookinfo", views.bookinfo, name="bookinfo"),
     path("password_reset", views.password_reset_request, name="password_reset"),
     path("bookform", views.bookForm, name="bookform"),
+    path("hacker/<int:id>", views.hacker, name="hacker"),
    
     
 ]

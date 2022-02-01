@@ -18,6 +18,17 @@ from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm,BookingForm
 from .models import  Driver, User,Passenger,Bus,Booking
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+
 User = get_user_model()
 
 class SignUpView(TemplateView):
@@ -179,21 +190,15 @@ def bookinfo(request):
     }
     return render(request, "passengers/bookinfo.html", context)
 
-
-
-
-
-
-from django.shortcuts import render, redirect
-from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
-from django.contrib.auth.forms import PasswordResetForm
-from django.contrib.auth.models import User
-from django.template.loader import render_to_string
-from django.db.models.query_utils import Q
-from django.utils.http import urlsafe_base64_encode
-from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes
+def hacker(request,id):
+    
+    print(id)
+    bookings = Bus.objects.filter(route_id = id)
+    assasin = {
+        "bookings":bookings,
+        "id":id
+    }
+    return render(request, "passengers/route.html", assasin)
 
 
 

@@ -13,5 +13,22 @@
     padding: 0.2rem;
     border-radius: 0.2rem;
     margin: 0 0.3rem;
+    
 }  
-
+h3{
+  color:red;
+  text-align: center;
+  font-size: 100px;
+  padding-top: 2em;
+  color: #ffffcc;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px green, 0 0 30px green,
+    0 0 40px green, 0 0 55px green, 0 0 70px green;
+}
+.search{
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.9;
+  background-image: url(/images/basi.jpeg);
+}
