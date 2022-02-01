@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.db.models import Q 
-from .models import User
 from django.conf import settings
 from django.http import HttpResponse
 from django.core.paginator import Paginator
@@ -15,7 +14,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm,BookingForm
-from .models import  Driver, User,Passenger,Bus,Booking
+from .models import  Driver, User,Passenger,Bus,Booking,Route
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -70,7 +69,7 @@ def driver(request):
         return redirect('users:driver')  
     else:
         form = BusForm()
-    return render(request,'drivers/driver.html',{'form':form})    
+    return render(request,c,{'form':form})    
 
 class PassengerSignUpView(CreateView):
     """[class view]
@@ -124,7 +123,16 @@ def bookForm(request):
     return render(request,'passengers/bookform.html',{'form':form, "buses":buses, "busData":busData})    
 def passenger(request):
     bus = Bus.objects.all()
-    return render(request, "passengers/passenger.html", {"bus": bus})
+    routes = Route.objects.all()
+    
+    
+      
+    return render(request, "passengers/passenger.html", {"routes":routes, "bus": bus,})
+
+def selectedroute(request,id):
+    bus = Route.objects.get(id=id)
+    return redirect(request,"passengers/selectedroute.html", {"bus":id} )
+
 def buspage(request):
     context = {
         "bus":Bus.objects.all()
@@ -224,3 +232,5 @@ def password_reset_request(request):
 					return redirect ("/password_reset/done/")
 	password_reset_form = PasswordResetForm()
 	return render(request=request, template_name="registration/password//password_reset.html", context={"password_reset_form":password_reset_form})
+
+
