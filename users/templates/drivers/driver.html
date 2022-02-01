@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags %} 
+{% include "navbar.html" %}
 
-{% include "home/navbar.html" %}
-
-<!-- Background video -->
+<!-- Background video --> 
 <div class="video-background-holder">
   <div class="video-background-overlay"></div>
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -14,13 +13,13 @@
     <div class="video-background-content container h-100">
       <div class="d-flex h-100 text-center align-items-center">
         <div class="w-100 text-white">
-          <h1 class="display-4">Welcome driver {{user.username}}!</h1>
+          <h1 class="display-4">Welcome Driver {{user.username}}!</h1>
             <p class="lead mb-0">BasiChap is a platform where you can post your bus and get customers.<br>Get to operate in the busiest routes in the country with us.<br>Post your bus info to get started.<br><p class="small text-active">Fast,simple and free!</p>
             <p class="lead mb-0"></p>
             <p class="lead mb-0"></p>
            
             <p class="lead">
-              <a href="#" class="btn btn-primary">Read More</a>            
+              <a href="{% url 'Basi:about' %}" class="btn btn-primary">Read More</a>            
             </p>
         </div>
       </div><!-- end text/button area -->
@@ -101,13 +100,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header border-bottom-0">
-              <h5 class="modal-title" id="exampleModalLabel">Add a route</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Add a Bus</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
                        <div class="modal-body">
-                        <form method="POST" action="/driver"  enctype="multipart/form-data">
+                        <form method="POST" action="/users/bus"  enctype="multipart/form-data">
                           {% csrf_token %}
                       {{form|crispy}}
                            
@@ -127,7 +126,7 @@
 <div class="center">
   <div class="btn-1">
   
-    <a href="{% url 'users:buspage' %}"><span>View buses</span></a>
+    <a href="{% url 'users:buspage' %}"><span>View your buses</span></a>
   </div>
   <!-- Created by   http://grohit.com/   -->
 </div>
@@ -455,10 +454,10 @@ html, body {
 
 
 
-</a></a>
-{% include "home/footer.html" %}
+
+{% include "footer.html" %}
 </div>
-{% include "home/chatbot.html" %}
+{% include "chatbot.html" %}
 
 
 {% endblock %}

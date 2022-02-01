@@ -1,6 +1,5 @@
 from django.shortcuts import render,get_object_or_404
 from django.db.models import Q 
-from .models import User
 from django.conf import settings
 from django.http import HttpResponse
 from django.core.paginator import Paginator
@@ -15,9 +14,20 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 from .forms import  DriverSignUpForm,PassengerSignUpForm,BusForm,BookingForm
-from .models import  Driver, User,Passenger,Bus,Booking
+from .models import  Driver, User,Passenger,Bus,Booking,Route
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
+
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
 User = get_user_model()
 
 class SignUpView(TemplateView):
@@ -67,10 +77,10 @@ def driver(request):
             new_bus.save()
            
             print(new_bus.__dict__)
-        return redirect('users:driver')  
+        return redirect('users:buspage')  
     else:
         form = BusForm()
-    return render(request,'drivers/driver.html',{'form':form})    
+    return render(request,"drivers/driver.html",{'form':form})    
 
 class PassengerSignUpView(CreateView):
     """[class view]
@@ -124,7 +134,17 @@ def bookForm(request):
     return render(request,'passengers/bookform.html',{'form':form, "buses":buses, "busData":busData})    
 def passenger(request):
     bus = Bus.objects.all()
-    return render(request, "passengers/passenger.html", {"bus": bus})
+    routes = Route.objects.all()
+    
+    
+      
+    return render(request, "passengers/passenger.html", {"routes":routes, "bus": bus,})
+
+def selectedroute(request,id):
+    routes = Route.objects.get(id=id)
+    # print(route)
+    return render(request,"passengers/selectedroute.html", {"routes":routes})
+
 def buspage(request):
     context = {
         "bus":Bus.objects.all()
@@ -184,6 +204,7 @@ def bookinfo(request):
 
 
 
+<<<<<<< HEAD
 from django.shortcuts import render, redirect,get_object_or_404
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
@@ -195,6 +216,8 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 
+=======
+>>>>>>> 8a9d08f8d9ff7fbb485b5190af1722cfdc3a46e6
 
 
 def password_reset_request(request):
@@ -224,3 +247,5 @@ def password_reset_request(request):
 					return redirect ("/password_reset/done/")
 	password_reset_form = PasswordResetForm()
 	return render(request=request, template_name="registration/password//password_reset.html", context={"password_reset_form":password_reset_form})
+
+

@@ -28,6 +28,7 @@ class Driver(models.Model):
     def __str__(self):
         return self.user.username
 
+
 class Passenger(models.Model):
     """[Passenger model]
 
@@ -77,13 +78,13 @@ class Bus(models.Model):
     #destination = models.CharField(max_length=100, blank=True)
     #pickup_point = models.CharField(max_length=100, blank=True)
     route_id = models.ForeignKey(Route, on_delete=models.CASCADE,default=1)
-    schedule = models.CharField(max_length=100,blank=True)
+    schedule =  models.DateTimeField()
     #seats = models.CharField(max_length=9,choices = Seats.choices,default=Seats.business)
     vip_seats = models.IntegerField(null=True,blank=True)
-    bussiness_seats = models.IntegerField(null=True,blank=True)
+    business_seats = models.IntegerField(null=True,blank=True)
     economy_seats = models.IntegerField(null=True,blank=True)
     vip_price = models.IntegerField(null=True,blank=True)
-    bussiness_price = models.IntegerField(null=True,blank=True)
+    business_price = models.IntegerField(null=True,blank=True)
     economy_price = models.IntegerField(null=True,blank=True)
     num_plate = models.CharField(max_length=100,blank=True)
     phone_num = models.CharField(max_length=100,blank=True)
@@ -118,7 +119,7 @@ class Booking(models.Model):
     seat = models.CharField(max_length=100, choices=SEATS_CHOICES,default="economy")
     phone_num = models.CharField(max_length=100,blank=True)
     email = models.CharField(max_length=100,blank=True)
-    bus = models.ForeignKey(Bus, on_delete=models.CASCADE)
+    bus  = models.ForeignKey(Bus, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=True)
     def __str__(self):
         return self.seat + " " + self.name
