@@ -66,7 +66,7 @@ def payment (request):
 
         stk_push_success(request, ph_number,total_amount)
 
-        return render (request,'success.html')
+        return render (request,'sucess.html')
         # return HttpResponse(f'Stk Push for {phone_number}')
     
-    return render (request,'payments.html', {'title': 'Payment'})
+    return render (request,'payment.html', {'title': 'Payment'})
