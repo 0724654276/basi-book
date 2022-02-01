@@ -27,7 +27,7 @@ from django.conf.urls.static import static
 from mpesa.urls import mpesa_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('users.urls')),
+    # path('',include('users.urls')),
     path("", include("users.urls", namespace="users")),
     path('mpesa/', include(mpesa_urls)),
     #path("", include("mpesa_api", namespace="mpesa_api")),
@@ -35,7 +35,7 @@ urlpatterns = [
     path("", include("Basi.urls", namespace="Basi")),
     path("profile/", include("profileApp.urls", namespace="profileApp")),
     path('accounts/', include('django.contrib.auth.urls')),
-    path("users/", include("users.urls", namespace="users")),
+    # path("users/", include("users.urls", namespace="users")),
     path('accounts/signup/', views.SignUpView.as_view(), name='signup'),
     path('accounts/signup/driver/', views.DriverSignUpView.as_view(), name='driver_signup'),
     path('accounts/signup/customer/', views.PassengerSignUpView.as_view(), name='passenger_signup'),

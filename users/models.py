@@ -119,7 +119,7 @@ class Booking(models.Model):
     seat = models.CharField(max_length=100, choices=SEATS_CHOICES,default="economy")
     phone_num = models.CharField(max_length=100,blank=True)
     email = models.CharField(max_length=100,blank=True)
-    bus = models.ForeignKey(Bus, on_delete=models.CASCADE)
+    bus  = models.ForeignKey(Bus, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=True)
     def __str__(self):
         return self.seat + " " + self.name
