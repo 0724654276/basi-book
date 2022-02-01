@@ -8,8 +8,8 @@
   <div class="content">
     <div class="flex-div">
       <div class="name-content">
-        <h1 class="logo">BasiBook</h1>
-        <p>Get connected with drivers and passengers</p>
+        <h1 class="logo">BasiBook <p>(Driver's Account)</p></h1>
+        <p>Get connected with drivers and passengers.</p>
       </div>
     <div class="form-card">
       <form method="post" novalidate>
@@ -17,11 +17,12 @@
         <input type="hidden" name="next" value="{{ next }}">
         <div class="form-group">{{form.username|as_crispy_field }}</div>
         {{ form.password|as_crispy_field }}
-        <button type="submit" class="btn btn-primary">Log in</button>
-        </form>
-        <center><a href="{% url 'users:password_reset' %}" style="margin-bottom: 2rem;">Forgot Password ?</a></center>
-        <hr>
-        <a href="{% url 'Basi:home' %}"><button class="create-account">Create New Account</button></a>
+        <a href="{% url 'Basi:home' %}"><button class="btn btn-primary">Log in</button></a>
+        
+      </form>
+      <center><a href="{% url 'users:password_reset' %}" style="margin-bottom: 2rem;">Forgot Password ?</a></center>
+      
+      <a href="{% url 'Basi:home' %}"><button class="create-account">Create an Account</button></a>
         </div>
         </div>
         <style>

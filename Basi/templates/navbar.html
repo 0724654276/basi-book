@@ -6,25 +6,21 @@
         <!-- Logo Image -->
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlqB5UbcTypdgaM-EF40cRFXBan-WtsrMKqA&usqp=CAU" width="45" alt="" style="border-radius:10px" class="d-inline-block align-middle mr-2">
         <!-- Logo Text -->
-        <span  href="{% url 'Basi:index' %}" class="text-uppercase font-weight-bold" style="color:aqua">BasiBook</span>
+        <span  href="{% url 'Basi:index' %}" class="text-uppercase font-weight-bold" style="color:white">BasiBook</span>
       </a>
   
       <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
   
       <div id="navbarSupportedContent" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="{% url 'Basi:index' %}" class="nav-link">Home <span class="sr-only">(current)</span></a></li>
+          <li class="nav-item active"  ><a href="{% url 'Basi:index' %}" class="nav-link" >Home <span class="sr-only">(current)</span></a></li>
           <li class="nav-item active"><a href="{% url 'Basi:about' %}" class="nav-link">About  <span class="sr-only">(current)</span></a></li>
         
 {% if not user.is_authenticated %}
           <li class="nav-item"><a href="{% url 'Basi:home' %}" class="nav-link">Account</a></li>
           {% endif %}
           {% if user.is_authenticated %}
-          <li class="nav-item">
-           <button class="btn btn-primary"><a style="color: white;" class="nav-link" href="{% url 'users:driver'  %}">Add buses</a></button>
-
-          </li>
-        
+          
 
           <li class="nav-item">
             <a class="nav-link" href="{% url 'profileApp:profile'  %}">Profile</a>
