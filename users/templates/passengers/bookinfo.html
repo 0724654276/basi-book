@@ -15,7 +15,9 @@
       <li class="list-group-item">Leaving: {{order.departure_date}}</li>
     </ul>
   </div>
+  <a href="{% url 'mpesa_api:payment' %}">Pay</a>
+
   {% endfor %}
 {% endfor %}
-<a href="{% url 'mpesa_api:lipa_na_mpesa' %}">Lipa</a>
+
 {% endblock %}
