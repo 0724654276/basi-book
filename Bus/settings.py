@@ -109,8 +109,8 @@ DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'basi',
-        'USER': 'geroge',
-    'PASSWORD':'kamakia91',
+        'USER': 'patrick',
+    'PASSWORD':'flower2',
     }
 }
 # Password validation

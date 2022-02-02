@@ -37,3 +37,4 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return self.from_email
+        return self.email

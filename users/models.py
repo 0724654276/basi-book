@@ -78,7 +78,7 @@ class Bus(models.Model):
     #destination = models.CharField(max_length=100, blank=True)
     #pickup_point = models.CharField(max_length=100, blank=True)
     route_id = models.ForeignKey(Route, on_delete=models.CASCADE,default=1)
-    schedule =  models.DateTimeField()
+    schedule = models.CharField(max_length=100)
     #seats = models.CharField(max_length=9,choices = Seats.choices,default=Seats.business)
     vip_seats = models.IntegerField(null=True,blank=True)
     business_seats = models.IntegerField(null=True,blank=True)
