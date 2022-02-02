@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import successView
 app_name = "Basi"
 urlpatterns = [
     path("home", views.home, name="home"),
@@ -7,4 +8,5 @@ urlpatterns = [
     path("book", views.book, name="book"),
     path("about", views.about, name="about"),
     path("routes", views.routes, name="routes"),
+    path('success/', successView, name='success'),
 ]

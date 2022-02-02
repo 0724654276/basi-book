@@ -1,42 +1,72 @@
 from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.http.response import JsonResponse
+from django_daraja.mpesa.core import MpesaClient
+from django.urls import reverse
 import requests
+from django.shortcuts import render, redirect
+from requests.api import get
 from requests.auth import HTTPBasicAuth
 import json
-from . mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
+import re
 
+
+cl = MpesaClient()
+stk_push_callback_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+b2c_callback_url = 'https://sandbox.safaricom.co.ke/mpesa/b2c/v1/paymentrequest'
+c2b_callback_url = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl'
 
 def getAccessToken(request):
-    consumer_key = 'J0cFvg7cqKhPOOfkKO9lWzQvfLl4XIMO'
-    consumer_secret = 'MT3QpElLBt2iFZCQ'
+    consumer_key = 'GAeIsGiTzoclVjKZ0lpGkRTKqSOlM4tP'
+    consumer_secret = 'il1gZPOjXMF3LeFD'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
-
     r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
     mpesa_access_token = json.loads(r.text)
     validated_mpesa_access_token = mpesa_access_token['access_token']
-
     return HttpResponse(validated_mpesa_access_token)
 
+def oauth_success(request):
+	r = cl.access_token()
+	return JsonResponse(r, safe=False)
+    
 
-def lipa_na_mpesa_online(request):
-    access_token = MpesaAccessToken.validated_mpesa_access_token
-    api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-    headers = {"Authorization": "Bearer %s" % access_token}
-    request = {
-        "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,
-        "Password": LipanaMpesaPpassword.decode_password,
-        "Timestamp": LipanaMpesaPpassword.lipa_time,
-        "TransactionType": "CustomerPayBillOnline",
-        "Amount": 1,
-        "PartyA": 254702972814,  # replace with your phone number to get stk push
-        "PartyB": LipanaMpesaPpassword.Business_short_code,
-        "PhoneNumber": 254702972814,  # replace with your phone number to get stk push
-        "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-        "AccountReference": "Patrick",
-        "TransactionDesc": "Testing stk push"
-    }
+def stk_push_success(request, ph_number,total_amount):
+    phone_number = ph_number
+    amount = total_amount
+    account_reference = 'Store Centre'
+    transaction_desc = 'STK Push Description'
+    callback_url = stk_push_callback_url
+    response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
+    return HttpResponse(response)
 
-    response = requests.post(api_url, json=request, headers=headers)
-    return HttpResponse('success')
+
+def home(request):
+    if request.user.is_authenticated:
+        return render(request, 'index.html')
+    else:
+        return render(request, 'index.html')
+
+
+
+def payment (request):
+    if request.method == 'POST':
+        name=request.POST.get('fname')
+        phone_number=request.POST.get('phone_number')
+        amount = request.POST.get("amount")
+        ph_number = None
+        total_amount = int(amount)
+        if phone_number[0] == '0':
+            ph_number = '254'+ phone_number[1:]
+        elif phone_number[0:2] == '254':
+            ph_number = phone_number
+        else:
+            # messages.error(request, 'Check you Phone Number format 2547xxxxxxxx')
+            return redirect(request.get_full_path())
+
+
+        stk_push_success(request, ph_number,total_amount)
+
+        return render (request,'sucess.html')
+        # return HttpResponse(f'Stk Push for {phone_number}')
+    
+    return render (request,'payment.html', {'title': 'Payment'})

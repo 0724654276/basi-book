@@ -9,6 +9,11 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView
 from .models import Ticket
 from .forms import ContactForm
+from django.conf import settings
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from .models import ContactUs
 # Create your views here.
 
 def home(request):
@@ -73,14 +78,20 @@ def book(request):
     return render(request,"book.html")
     return render(request, "home/index.html")
 def about(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
-            email_subject = f'New contact {form.cleaned_data["email"]}: {form.cleaned_data["subject"]}'
-            email_message = form.cleaned_data['message']
-            send_mail(email_subject, email_message, settings.CONTACT_EMAIL, settings.ADMIN_EMAIL)
-            return render(request, 'home/contact/success.html')
-    form = ContactForm()
-    context = {'form': form}
-    return render(request, 'home/about.html', context)
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['admin@example.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('Basi:success')
+    return render(request, "home/about.html", {'form': form})
+
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')
