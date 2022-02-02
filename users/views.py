@@ -127,7 +127,7 @@ def bookForm(request):
             new_order.save()
             
             print(new_order.__dict__)
-        return redirect('users:bookinfo')  
+        return redirect('users:businfo')  
     else:
         form = BookingForm()
 
@@ -204,7 +204,6 @@ def bookinfo(request):
 
 
 
-<<<<<<< HEAD
 from django.shortcuts import render, redirect,get_object_or_404
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
@@ -215,9 +214,6 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
-
-=======
->>>>>>> 8a9d08f8d9ff7fbb485b5190af1722cfdc3a46e6
 
 
 def password_reset_request(request):
