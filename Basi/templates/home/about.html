@@ -34,6 +34,7 @@
 <br>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> c3add7489d6ed7835b1c11e36834f95d8389d588
@@ -48,6 +49,8 @@
 <<<<<<< HEAD
 =======
 =======
+=======
+>>>>>>> 3b56d6fa3d345471fb8b02bae2177a1a0138f7ad
 <form action="" method="post">
     <input type="hidden" name="csrfmiddlewaretoken" value="yTF5g7ceTgkwsOimKxZpuV10DG4a1TWFwQ60pneu047lPvu6kTAlNYPfYEC9G8jq">
     {% csrf_token %}
@@ -77,8 +80,19 @@
     </tr>
     <input type="submit" value="Submit">
     {% include "footer.html" %}
+<<<<<<< HEAD
 >>>>>>> 8a9d08f8d9ff7fbb485b5190af1722cfdc3a46e6
 >>>>>>> c3add7489d6ed7835b1c11e36834f95d8389d588
+=======
+</style>
+<h1>Contact Us</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-actions">
+      <button type="submit">Send</button>
+    </div>
+>>>>>>> 3b56d6fa3d345471fb8b02bae2177a1a0138f7ad
 </form>
 </div>
   <style>
