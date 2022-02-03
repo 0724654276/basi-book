@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %} 
 {% include "navbar.html" %}
 <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-    <strong>Hello {{user.username}}: </strong>Scroll to view available buses
+    <strong>Hello {{user.username}}: </strong>Scroll to view available routes with their prices.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -11,16 +11,23 @@
   </div>
 
     <center>
-      <div class="tab-content col-md-12" style="	width:600px;
-        margin:10px;
-        background-color: #E0D8D6;
-      ">
+      <div class="tab-content col-md-12" style="	width:600px;margin:10px;background-color: #E0D8D6;">
         <h3>List of Routes</h3>
         {% for route in routes %}
-        <a class="btn btn-primary" href="selectedroute/{{route.id}}" role="button">From {{route.pickup_point}} to {{route.destination}}</a>
-        <br>
-        <br>
-        <br>
+        <div class="container-fluid mt-5">
+          <a class="btn btn-primary" href="selectedroute/{{route.id}}" role="button">From {{route.pickup_point}} to {{route.destination}}</a>
+          <br>
+          {%for bus in bus%}
+          <br>
+          Vip Seats price:{{bus.vip_price }} Ksh
+          <br>
+          Businesss class seats price:{{bus.business_price }} Ksh
+          <br>
+          Economy seats price: {{bus.economy_price}} Ksh
+          <br>
+          {% endfor %}
+          <br>
+        </div>
         {% endfor %}
       </div>
 

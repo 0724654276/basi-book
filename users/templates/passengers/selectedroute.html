@@ -20,8 +20,17 @@
                 </a>
             </center>
         </div> 
+        {%for bus in bus%}
+        <br>
+        Vip Seats price:{{bus.vip_price }} Ksh
+        <br>
+        Businesss class seats price:{{bus.business_price }} Ksh
+        <br>
+        Economy seats price: {{bus.economy_price}} Ksh
+        <br>
       </div>
 </center>
+
 
 <style>
     .button {

@@ -3,13 +3,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<body>
+<body style="background: #04275c;">
 
   <div class="content">
     <div class="flex-div">
       <div class="name-content">
-        <h1 class="logo">BasiBook <p>(Driver's Account)</p></h1>
-        <p>Get connected with drivers and passengers.</p>
+        <h1 class="logo" style="color:rgb(98, 204, 98)">BasiBook</h1>
+        <p style="color:#fff">Get connected with drivers and passengers.</p>
       </div>
     <div class="form-card">
       <form method="post" novalidate>
@@ -17,12 +17,15 @@
         <input type="hidden" name="next" value="{{ next }}">
         <div class="form-group">{{form.username|as_crispy_field }}</div>
         {{ form.password|as_crispy_field }}
-        <a href="{% url 'Basi:home' %}"><button class="btn btn-primary">Log in</button></a>
-        
+        <a href="{% url 'Basi:home' %}"><button class="btn btn-success">Log in as Driver</button></a>
+       
       </form>
+      <a style="margin-left: 200px;margin-top: -50px;" href="{% url 'users:passenger' %}"><button class="btn btn-success">Log in as Traveller</button></a>
+      <br>
+
       <center><a href="{% url 'users:password_reset' %}" style="margin-bottom: 2rem;">Forgot Password ?</a></center>
       
-      <a href="{% url 'Basi:home' %}"><button class="create-account">Create an Account</button></a>
+      <a href="{% url 'driver_signup' %}"><button class="create-account">Create an Account</button></a>
         </div>
         </div>
         <style>
@@ -78,7 +81,7 @@ body {
   background: #fff;
   padding: 2rem;
   width: 530px;
-  height: 400px;
+  height: 450px;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }

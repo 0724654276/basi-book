@@ -3,124 +3,137 @@
 {% load bootstrap4 %}
 {% block content %}
 <html>
-    <body>
-        <div class="header">
-            {% include "navbar.html" %}
-            <br>
-            <br>
-            <br>
-            <center>
-                <a class="btn btn-primary" id="button" href="{% url 'driver_signup' %}" role="button">
-                                  <span >Driver account</span>
-                              </a>
-                <a style="margin-left: 2rem;" class="btn btn-primary" href="{% url 'passenger_signup' %}" id="button" role="button">
-                                      <span>Traveller account</span>
-                                  </a>
+<body style="background-color: rgb(3, 15, 85);">
 
-                              </div>
-                        </div>
-                    </div>
-
-
-                </div>                
-            </center>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-   
-
-            
-        </div>
-        <div class="search" style="padding: 100px; background-color: white !important;">
-            <center><h3>Search goes here....</h3></center>
-        </div>
-        <div class="line" style="margin-top: 4rem; ">
-            <h2 class='lineUp text-center'>Routes</h2>
-            <center>
-                <a href="{% url 'users:passenger' %}">
-                    <button class="button" style="vertical-align:middle">
-                        <span>View Routes </span>
-                    </button>
-                </a>
-            </center>
-        </div>
-
-    
-
-
-
-
-    <div class="container" style="margin-top: 3rem; ">
-        <div class="row">
-            <div class="col" style="column-count: 1">
-                <ul class="text-center">
-                    <a class="btn btn-secondary" href="#" role="button">Nairobi</a>
-                    <a class="btn btn-secondary" href="#" role="button">Mombasa</a>
-                    <a class="btn btn-secondary" href="#" role="button">Nakuru</a>
-                    <a class="btn btn-secondary" href="#" role="button">Kisumu</a>
-                    <a class="btn btn-secondary" href="#" role="button">Meru</a>
-                    <a class="btn btn-secondary" href="#" role="button">Machakos</a>   
-                </ul>
+<div class="header">
+{% include "navbar.html" %}
+<br>
+<br>
+<br> 
+<center style="font-family: Georgia, 'Times New Roman', Times, serif;color:#fff; font-size: 30px;">
+    Welcome To <u>Basibook</u>, The best bus booking service that there is.
+</center>
+<br>
+<br>
+<br>           
+    <div class="container">
+        <img src="/media/image/driver1.jpg" alt="Avatar" class="image" style="width:100%">
+        <div class="middle" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+            <div class="text">
+            <a class="btn btn-success" id="button" href="{% url 'driver_signup' %}" role="button" style='margin-top:50px; margin-right:700px; width:150px'>
+                <span >Driver account</span>
+            </a>
+            <h2 style="margin-left:500px; color: #fff;font-size:30px">"Lead the way"
+                <p style="font-size: 20px;">Andre Azu</p></h2>
             </div>
         </div>
+    </div>
+</div>
+<br>
+<br>
+    <div class="container" id="travel">
+        <img src="/media/image/Passenger2.jpg" alt="Avatar" class="image" style="width:100%; margin-left: 300px; color: white">
+        <div class="middle" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                <a style="margin-left: 650px;margin-top:70px;width:150px " class="btn btn-success" href="{% url 'passenger_signup' %}" id="button" role="button">
+                    <span>Traveller account</span>
+                </a>
+                <h2 style="margin-left:-700px; color: #fff;">"To travel is to live"
+                <p style="font-size: 20px;">Mark Zuckerberg</p></h2>
+        </div>
+    </div>
+    <br>
+    <br>
+
+<!-- Route section -->
+<div class="container">
+    <img src="/media/bus_pics/bus.jpg" alt="Avatar" class="image" style="width:100%; margin-right: 300px;">
+    <div class="middle">
+            <a style="margin-right: 650px;margin-top:70px;width:150px " class="btn btn-success" href="{% url 'passenger_signup' %}" id="button" role="button">
+                <span>View Routes </span>
+            </a>
+            <div class="container" style="margin-top:-200px; margin-left: 700px;">
+                <div class="row">
+                    <div class="col" style="column-count: 1">
+                        <h2 class='lineUp text-center' style="margin-left: 90px;margin-top:30px; color:#fff">We are headed where you are heading...</h2>
+                        <ul class="text-center">
+                            <a class="btn btn-success" href="#travel" role="button">Nairobi</a>
+                            <a class="btn btn-success" href="#travel" role="button">Mombasa</a>
+                            <a class="btn btn-success" href="#travel" role="button">Nakuru</a>
+                            <a class="btn btn-success" href="#travel" role="button">Kisumu</a>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </div>
 </div>
 
-<!--carousel-->
-<script>
-     $('#myCarousel').carousel({
-    interval: 3000,
- })
-</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <!--chat bot-->
 {% include "chatbot.html" %}
 <div class="footer">
     {% include "footer.html" %}
 </div>
-</body>
+                          
 <style>
-    .button {
-      display: inline-block;
-      border-radius: 4px;
-      background-color: #f4511e;
-      border: none;
-      color: #FFFFFF;
-      text-align: center;
-      font-size: 28px;
-      padding: 20px;
-      width: 200px;
-      transition: all 0.5s;
-      cursor: pointer;
-      margin: 5px;
-    }
-    
-    .button span {
-      cursor: pointer;
-      display: inline-block;
-      position: relative;
-      transition: 0.5s;
-    }
-    
-    .button span:after {
-      content: '\00bb';
-      position: absolute;
-      opacity: 0;
-      top: 0;
-      right: -20px;
-      transition: 0.5s;
-    }
-    
-    .button:hover span {
-      padding-right: 25px;
-    }
-    
-    .button:hover span:after {
-      opacity: 1;
-      right: 0;
-    }
-    </style>
-    
+    /* image styling */
+.container {
+    position: relative;
+    width: 50%;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    margin-left: -300px;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.container:hover .image {
+    opacity: 0.3;
+}
+
+.container:hover .middle {
+    opacity: 1;
+}
+
+.btn-primary {
+    background-color: #04AA6D;
+    font-size: 16px;
+    padding: 16px 32px;
+    margin-left: 100px;
+}
+
+/* button styling */
+
+</style>
+<!--carousel-->
+<script>
+    $('#myCarousel').carousel({
+   interval: 3000,
+})
+</script>
 </html>
 {% endblock %}
