@@ -127,7 +127,7 @@ def bookForm(request):
             new_order.save()
             
             print(new_order.__dict__)
-        return redirect('users:businfo')  
+        return redirect('users:bookinfo')  
     else:
         form = BookingForm()
 
