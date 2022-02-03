@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 DEFAULT_FROM_EMAIL = 'mugambi645@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -114,6 +114,7 @@ class Booking(models.Model):
     Args:
         models ([type]): [description]
     """
+
     route = models.ForeignKey(Route, on_delete=models.CASCADE)
     departure_date = models.CharField(max_length=100,blank=True)
     seat = models.CharField(max_length=100, choices=SEATS_CHOICES,default="economy")

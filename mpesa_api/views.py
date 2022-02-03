@@ -38,14 +38,14 @@ def stk_push_success(request, ph_number,total_amount):
     callback_url = stk_push_callback_url
     response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
     return HttpResponse(response)
-
+'''
 
 def home(request):
     if request.user.is_authenticated:
         return render(request, 'index.html')
     else:
         return render(request, 'index.html')
-
+'''
 
 
 def payment (request):

@@ -80,5 +80,5 @@ class RouteForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = "__all__"
+        fields = ["route", "departure_date", "seat","phone_num","email", "bus" ,"name"]
 
