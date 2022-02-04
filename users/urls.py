@@ -15,6 +15,7 @@ urlpatterns = [
     path("bookinfo", views.bookinfo, name="bookinfo"),
     path("password_reset", views.password_reset_request, name="password_reset"),
     path("bookform", views.bookForm, name="bookform"),
+    path('delete/<int:pk>', views.delete_order, name="delete_order")
    
     
 ]

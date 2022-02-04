@@ -17,8 +17,8 @@ b2c_callback_url = 'https://sandbox.safaricom.co.ke/mpesa/b2c/v1/paymentrequest'
 c2b_callback_url = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl'
 
 def getAccessToken(request):
-    consumer_key = 'GAeIsGiTzoclVjKZ0lpGkRTKqSOlM4tP'
-    consumer_secret = 'il1gZPOjXMF3LeFD'
+    consumer_key = 'J0cFvg7cqKhPOOfkKO9lWzQvfLl4XIMO'
+    consumer_secret = 'MT3QpElLBt2iFZCQ'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
     r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
     mpesa_access_token = json.loads(r.text)
@@ -48,7 +48,7 @@ def home(request):
 '''
 
 
-def payment (request):
+def payment(request):
     if request.method == 'POST':
         name=request.POST.get('fname')
         phone_number=request.POST.get('phone_number')

@@ -245,3 +245,14 @@ def password_reset_request(request):
 	return render(request=request, template_name="registration/password//password_reset.html", context={"password_reset_form":password_reset_form})
 
 
+
+
+
+def delete_order(request, pk):
+    """ Cancel an order from the profile page """
+    order = Booking.objects.get(id=pk)
+    if request.method == "POST":
+        order.delete()
+        return redirect('users:bookform')
+
+    return render(request, "passengers/delete_order.html", {'item': order})

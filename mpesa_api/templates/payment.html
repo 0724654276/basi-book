@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+<p style="margin-top: 2rem; margin: 2rem;"><a href="/">Back</a></p>
 
-
-<div class="container">
+<center><div class="container" style="margin-top: 7rem; margin-left: 4rem;">
     <div class="row">
         <div class="col">
-            <h2>Pay</h2>
-            <p><a href="/">Back</a></p>
+            <h2><img src="https://majira.co.ke/wp-content/uploads/2020/02/mpesa.jpg" alt="..." class="img-thumbnail" width='150' style="margin: 2rem;">
+       
             <form action="{% url 'mpesa_api:payment' %}" method="POST">
                 {% csrf_token %}
                 <div class="col-md-5">

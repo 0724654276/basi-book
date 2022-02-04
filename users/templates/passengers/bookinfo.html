@@ -7,19 +7,20 @@
 {% for order in orders %}
 {% load static %}
 <div class="container">
+  <h3 style="margin-left: 5rem;" class="small text-muted mb-0">{{user.username}}</h3>
   
 
   <div class="row header">
-    <div class="col-xs-12 text-center">
-    
-      <a href="#">{{user.username}} Order</span></a>
+    <div class="col-xs-12 ">
+
     </div>
   </div>
   
   <div class="row">
-    <div class="col-sm-5 first-column">
+    <div class="col-md-5 first-column">
+     <center><h3 style="color: black; margin-top: 2rem;">Available seats</h3></center>
       <div class="row">
-        
+     
         <div class="col">
         
           <p class="small text-muted mb-1">Vip <br>{{bus.vip_seats}}</p>
@@ -47,6 +48,10 @@
               <li class="list-group-item">Route: {{order.route}}</li>
               <li class="list-group-item">Seat: {{order.seat}}</li>
               <li class="list-group-item">Leaving: {{order.departure_date}}</li>
+              <li class="list-group-item">Email: {{order.email}}</li>
+              <li class="list-group-item">Phone: {{order.phone_num}}</li>
+             
+             
             </ul>
           </div>
       </p>
@@ -63,7 +68,7 @@
   <div class="row">
     
     <section class="content">
-      <a style="margin-left: 6rem;" href="#" class="btn btn--action"><span>Cancel order</span></a>
+      <a style="margin-left: 6rem;" href="{% url 'users:delete_order' order.pk %}" class="btn btn--action"><span>Cancel order</span></a>
       
   </div>
 
@@ -424,7 +429,7 @@ button.active span span:nth-of-type(8) {
 <style>
   
 .first-column {
-    background: green;
+    background: #e5e5e5 !important;
     color: white;
     font-size: 2rem;
     border-width:2px;
@@ -440,17 +445,26 @@ button.active span span:nth-of-type(8) {
   border-width: 2px;
 }
 </style>
+{% endfor %}
+<div class="container" style="margin-top: 8rem;">
+
+<div class="card text-center">
+  <div class="card-header">
+ 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">No Orders!</h5>
+    <p class="card-text">You have made zero orders.Go to bookings.</p>
+    <a href="{% url 'users:bookform' %}" class="btn btn-primary">Bookings</a>
+  </div>
+  <div class="card-footer text-muted">
+ 
+  </div>
+</div>
 
 
 
-
-
-
-
-
-
-
-  {% endfor %}
+{% include "chatbot.html" %}
 
 
 {% endblock %}
