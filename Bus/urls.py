@@ -23,14 +23,14 @@ from django.urls import path,include
 from users import views
 from django.conf import settings
 from django.conf.urls.static import static
-from mpesa.urls import mpesa_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('',include('users.urls')),
     path("users/", include("users.urls", namespace="users")),
-    path('mpesa/', include(mpesa_urls)),
-    #path("", include("mpesa_api", namespace="mpesa_api")),
-    path('api/v1/', include('mpesa_api.urls', namespace="mpesa_api")),
+    
+    path('paypal/', include('paypal.standard.ipn.urls')),
+    
     path("", include("Basi.urls", namespace="Basi")),
     path("profile/", include("profileApp.urls", namespace="profileApp")),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -41,7 +41,8 @@ urlpatterns = [
     path("", include("blog.urls", namespace="blog")),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='main/password/password_reset_done.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="main/password/password_reset_confirm.html"), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='main/password/password_reset_complete.html'), name='password_reset_complete'),  
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='main/password/password_reset_complete.html'), name='password_reset_complete'),
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(

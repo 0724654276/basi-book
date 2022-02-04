@@ -106,7 +106,7 @@
               </button>
             </div>
                        <div class="modal-body">
-                        <form method="POST" action="/users/bus"  enctype="multipart/form-data">
+                        <form method="POST" action=""  enctype="multipart/form-data">
                           {% csrf_token %}
                       {{form|crispy}}
                            
@@ -458,9 +458,6 @@ html, body {
 {% include "footer.html" %}
 </div>
 {% include "chatbot.html" %}
-
-
-
 
 
 {% endblock %}

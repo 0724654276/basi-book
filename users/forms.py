@@ -59,7 +59,7 @@ class BusForm(forms.ModelForm):
     """
     class Meta:
         model = Bus
-        fields =['route_id','schedule','vip_seats','business_seats', 'economy_seats', 'vip_price','business_price', 'economy_price','num_plate','phone_num' ]
+        fields =["user",'route_id','schedule','vip_seats','business_seats', 'economy_seats', 'vip_price','business_price', 'economy_price','num_plate','phone_num' ]
         
 class BusUpdateForm(forms.ModelForm):
     """[summary]
@@ -80,5 +80,5 @@ class RouteForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = "__all__"
+        fields = ["route", "departure_date", "seat","phone_num","email", "bus" ,"name"]
 

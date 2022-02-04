@@ -1,8 +1,80 @@
  {% extends "base.html" %}
 {% block content %} 
-<form action = "" method = "post">
+{% include "navbar.html" %}
+
+{% load crispy_forms_tags %}
+<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    <strong>Hello {{user.username}}!</strong>Please note that you have to pay for your ticket to be processed.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<center>
+    <div class="container">
+        <hr><br><br><br>
+    <div class="form-card">
+<form method="post">
     {% csrf_token %}
-    {{form }}
-    <input type="submit" value=Submit>
-</form>
+  {{form|crispy}}
+  <button type="submit" class="btn btn-success">Submit</button>
+</form></div></center><hr>
+</div></a><br><br><br>
+
+{% include "footer.html" %}
+<style>
+body{
+  background-color: darkblue;
+}
+    .form-card {
+  display:flow-root;
+  flex-direction:row;
+  background: #b7b7a4;
+  padding: 3rem;
+  width: 700px;
+  margin: 3rem;
+  height: 750px;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.form-card input {
+  outline: none;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.form-card input:focus {
+  border: 1.9px solid #1877f2;
+}
+
+.form-card .login {
+  outline: none;
+  border: none;
+  background: #1877f2;
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.form-card .login:hover {
+  background: #0f71f1;
+  cursor: pointer;
+}
+
+.form-card a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  padding-top: 0.8rem;
+  color: #1877f2;
+}
+
+.form-card hr {
+  background: #f7f7f7;
+  margin: 1rem;
+}
+
+</style>
 {% endblock %}

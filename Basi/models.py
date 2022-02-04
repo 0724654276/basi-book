@@ -31,9 +31,10 @@ class ContactUs(models.Model):
         models ([class]): [create contact form]
 
     """
-    email = models.EmailField()
+    from_email = models.EmailField()
     subject = models.CharField(max_length=255)
     message = models.TextField()
 
     def __str__(self):
+        return self.from_email
         return self.email
